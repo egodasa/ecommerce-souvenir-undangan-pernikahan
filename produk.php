@@ -1,6 +1,7 @@
 <?php
 session_start();
 require "koneksi.php";
+cekLogin('all');
 $detail = $db->from('tbl_produk')->where('id_produk',$_GET['id_produk'])->select()->one();
 $foto = $db->from('tbl_foto_produk')->where('id_produk',$_GET['id_produk'])->select()->many();
 include "template/head.php";

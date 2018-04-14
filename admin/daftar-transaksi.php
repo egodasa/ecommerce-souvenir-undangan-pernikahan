@@ -1,6 +1,7 @@
 <?php
 session_start();
 require "../koneksi.php";
+cekLogin('Admin');
 if(isset($_GET['id_pemesanan'])){
 	$detailPesan = $db->from('tbl_pemesanan')
     ->leftJoin('tbl_pembayaran', array('tbl_pemesanan.id_pemesanan' => 'tbl_pembayaran.id_pemesanan'))

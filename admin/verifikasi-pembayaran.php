@@ -1,6 +1,7 @@
 <?php
 session_start();
 require "../koneksi.php";
+cekLogin('Admin');
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	$data = $_POST;
 	$db->from('tbl_pembayaran')->where('id_pemesanan',$_GET['id_pemesanan'])->update($data)->execute();

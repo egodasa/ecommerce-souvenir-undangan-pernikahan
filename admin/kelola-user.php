@@ -1,6 +1,7 @@
 <?php
 session_start();
 require "../koneksi.php";
+cekLogin('Admin');
 include "../template/components.php";
 include "../template/head.php";
 ?>

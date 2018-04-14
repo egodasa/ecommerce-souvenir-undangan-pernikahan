@@ -1,5 +1,7 @@
 <?php
 session_start();
+require 'koneksi.php';
+cekLogin('all');
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
 include "template/head.php";
 ?>

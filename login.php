@@ -1,5 +1,8 @@
 <?php
 session_start();
+if(isset($_SESSION['username'])){
+	header('Location: /skripsi');
+}
 include "template/components.php";
 $pesan = '';
 $pesandaftar = '';

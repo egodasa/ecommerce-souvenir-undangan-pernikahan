@@ -1,6 +1,7 @@
 <?php
 session_start();
 require "../koneksi.php";
+cekLogin('Admin');
 include "../template/head.php";
 
 $awal = date('Y-m-d');
@@ -23,8 +24,9 @@ $tableConf = array(
 		"caption"	=>	"Total Harga"
 	)
 );
-$dataTable = $db->sql('select * from tbl_pemesanan where tgl_pesan between "'.$awal.'" and "'.$akhir.'"')->many();
-echo 'select * from tbl_pemesanan where date(tgl_pesan) between "'.$awal.'" and "'.$akhir.'"';
+if(isset($_GET['awal'])){
+	$dataTable = $db->from('tbl_pemesanan')->many();
+}else $dataTable = $db->sql('select * from tbl_pemesanan where tgl_pesan between "'.$awal.'" and "'.$akhir.'"')->many();
 ?>
 <body>
 <div id="all">

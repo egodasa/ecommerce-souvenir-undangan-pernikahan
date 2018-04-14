@@ -1,12 +1,14 @@
 <?php
 session_start();
+require "koneksi.php";
+cekLogin('Pelanggan');
 include "template/head.php";
 ?>
 <body>
 <div id="all">
 <?php
 include "template/header.php";
-require "koneksi.php";
+
 $tableConf = array(
 	array(
 		"name"		=>	"nama_pemesan",

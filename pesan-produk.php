@@ -1,7 +1,9 @@
 <?php
 session_start();
-if(!empty($_GET['id_produk']) && !empty($_GET['jenis'])) {
 include "koneksi.php";
+cekLogin('Pelanggan');
+if(!empty($_GET['id_produk']) && !empty($_GET['jenis'])) {
+
 $detail = $db->from('tbl_produk')->where('id_produk',$_GET['id_produk'])->select()->one();
 include "template/head.php";
 ?>
