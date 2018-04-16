@@ -20,6 +20,7 @@
                     <li class="dropdown-item"><a href="<?php echo $base_url;?>/admin/daftar-transaksi.php" class="nav-link"><i class="fa fa-list"></i> Daftar Transaksi</a></li>
 					<li class="dropdown-item"><a href="<?php echo $base_url;?>/admin/kelola-produk.php" class="nav-link"><i class="fa fa-heart"></i> Daftar Produk</a></li>
 					<li class="dropdown-item"><a href="<?php echo $base_url;?>/admin/kelola-user.php" class="nav-link"><i class="fa fa-user"></i> Daftar User</a></li>
+					<li class="dropdown-item"><a href="<?php echo $base_url;?>/admin/laporan.php" class="nav-link"><i class="fa fa-list"></i> Laporan Transaksi</a></li>
 					<li class="dropdown-item"><a href="<?php echo $base_url;?>/logout.php" class="nav-link"><i class="fa fa-sign-out"></i> Logout</a></li>
 					<?php
 					}else{
