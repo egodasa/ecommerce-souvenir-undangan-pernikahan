@@ -24,7 +24,7 @@ $tableConf = array(
 		"caption"	=>	"Total Harga"
 	)
 );
-if(isset($_GET['awal'])){
+if(!isset($_GET['awal'])){
 	$dataTable = $db->from('tbl_pemesanan')->many();
 }else $dataTable = $db->sql('select * from tbl_pemesanan where tgl_pesan between "'.$awal.'" and "'.$akhir.'"')->many();
 ?>
@@ -36,7 +36,10 @@ include "../template/header.php";
 <div id="content">
 <div class="container">
 	
+
 <!-- START OF CONTENT -->
+<div class="row bar mb-0">
+<div class="col-md-12">
 <h2>Laporan Transaksi</h2>
 <form method="GET" action="">
 <div class="row">
@@ -52,14 +55,12 @@ include "../template/header.php";
 			<input type="date" name="akhir" class="form-control" />
 		</div>
 	</div>
-	<div class="col-sm-4">
-		<div class="form-group">
+</div>
+<div class="form-group">
 			<button tpe="submit" class="btn btn-primary">Tampilkan</button>
 		</div>
-	</div>
-</div>
 </form>
-<div class="table-responsive">
+<hr>
 <table class="table table-hover">
 <thead>
 	<tr>
@@ -103,9 +104,11 @@ if(count($dataTable) == 0){
 </div>
 </div>
 </div>
+</div>
 <?php
 }
 ?>
+
 <!-- FOOTER -->
 </div>
 <?php include "../template/footer.php"; ?>
