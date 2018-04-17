@@ -20,13 +20,23 @@ $tableConf = array(
 		"caption"	=>	"Tanggal Pesan"
 	),
 	array(
+		"name"		=>	"nm_produk",
+		"caption"	=>	"Nama Produk"
+	),
+	array(
+		"name"		=>	"jumlah_pesan",
+		"caption"	=>	"Jumlah Pesan"
+	),
+	array(
 		"name"		=>	"total_harga",
 		"caption"	=>	"Total Harga"
 	)
 );
 if(!isset($_GET['awal'])){
-	$dataTable = $db->from('tbl_pemesanan')->many();
-}else $dataTable = $db->sql('select * from tbl_pemesanan where tgl_pesan between "'.$awal.'" and "'.$akhir.'"')->many();
+	$dataTable = $db->from('tbl_pemesanan')
+	->join('tbl_produk','tbl_pemesanan.id_produk','tbl_produk.id_produk')
+	->many();
+}else $dataTable = $db->sql('select * from tbl_pemesanan join tbl_produk on tbl_pemesanan.id_produk = tbl_produk.id_produk where tgl_pesan between "'.$awal.'" and "'.$akhir.'"')->many();
 ?>
 <body>
 <div id="all">
@@ -57,7 +67,8 @@ include "../template/header.php";
 	</div>
 </div>
 <div class="form-group">
-			<button tpe="submit" class="btn btn-primary">Tampilkan</button>
+			<button tpe="submit" class="btn btn-sm btn-primary">Tampilkan</button>
+			<a target="_blank" class="btn btn-sm btn-success" href="<?php echo "cetak-laporan.php?".$_SERVER['QUERY_STRING']; ?>">Cetak Laporan</a>
 		</div>
 </form>
 <hr>
@@ -95,7 +106,7 @@ if(count($dataTable) == 0){
 	echo "
 	<tfoot>
 	<tr>
-	<td colspan=3>Total</td>
+	<td colspan=5>Total</td>
 	<td>Rp ".number_format($total,2,',','.')."</td>
 	</tr></tfoot>";
 ?>

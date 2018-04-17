@@ -1,5 +1,6 @@
 <?php
 $base_url = "http://localhost/skripsi";
+require_once __DIR__ . '/../vendor/autoload.php';
 //~ require "flash.php";
 //~ $msg = new \Plasticbrain\FlashMessages\FlashMessages();
 ?>
