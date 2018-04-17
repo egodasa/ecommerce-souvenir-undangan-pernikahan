@@ -2,6 +2,9 @@
 session_start();
 require "../koneksi.php";
 cekLogin('Admin');
+if($_SERVER['REQUEST_METHOD'] == 'POST'){
+	$db->from('tbl_user')->insert($_POST)->execute();
+}
 include "../template/components.php";
 include "../template/head.php";
 ?>
@@ -60,6 +63,7 @@ $user = array(
 <div class="row bar mb-0">
 <div class="col-md-12">
 <h2>Input User</h2>
+<form method="POST" action="">
 <?php
 formGenerator($user);
 ?>
