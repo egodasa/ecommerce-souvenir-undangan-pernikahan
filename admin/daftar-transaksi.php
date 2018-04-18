@@ -35,6 +35,7 @@ if(isset($_GET['id_pemesanan'])){
 	    ->leftJoin('tbl_pembayaran', array('tbl_pemesanan.id_pemesanan' => 'tbl_pembayaran.id_pemesanan'))
 	    ->join('tbl_produk', array('tbl_pemesanan.id_produk' => 'tbl_produk.id_produk'))
 	    ->join('tbl_kota', array('tbl_pemesanan.id_kota' => 'tbl_kota.id_kota'))
+	    ->where('id_pemesanan',$_GET['id_pemesanan'])
 	    ->select(array('tbl_pemesanan.*','tbl_pembayaran.status_pembayaran','tbl_produk.harga','tbl_kota.nm_kota','tbl_kota.tarif'))
 	    ->one();
 }else $dataTable = $db->from('tbl_pemesanan')
