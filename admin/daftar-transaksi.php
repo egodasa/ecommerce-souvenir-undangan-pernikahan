@@ -1,20 +1,16 @@
 <?php
 session_start();
-require "../koneksi.php";
+require "koneksi.php";
 cekLogin('Admin');
-if(isset($_GET['id_pemesanan'])){
-	$detailPesan = $db->from('tbl_pemesanan')
-    ->leftJoin('tbl_pembayaran', array('tbl_pemesanan.id_pemesanan' => 'tbl_pembayaran.id_pemesanan'))
-    ->join('tbl_produk', array('tbl_pemesanan.id_produk' => 'tbl_produk.id_produk'))
-    ->where('tbl_pemesanan.id_pemesanan',$_GET['id_pemesanan'])->select()->one();
-    if(count($detailPesan) == 0) header('Location: daftar-transaksi.php');
-   }else{
-	   $dataTable = $db->from('tbl_pemesanan')
-	    ->leftJoin('tbl_pembayaran', array('tbl_pemesanan.id_pemesanan' => 'tbl_pembayaran.id_pemesanan'))
-	    ->select(array('tbl_pemesanan.*','tbl_pembayaran.status_pembayaran'))
-	    ->execute();
-   }
-include "../template/head.php";
+$judul = "Daftar Transaksi";
+include "template/head.php";
+include "template/components.php";
+?>
+<body>
+<div id="all">
+<?php
+include "template/header.php";
+
 $tableConf = array(
 	array(
 		"name"		=>	"nama_pemesan",
@@ -34,130 +30,129 @@ $tableConf = array(
 	)
 );
 
+if(isset($_GET['id_pemesanan'])){
+	$detail = $db->from('tbl_pemesanan')
+	    ->leftJoin('tbl_pembayaran', array('tbl_pemesanan.id_pemesanan' => 'tbl_pembayaran.id_pemesanan'))
+	    ->join('tbl_produk', array('tbl_pemesanan.id_produk' => 'tbl_produk.id_produk'))
+	    ->join('tbl_kota', array('tbl_pemesanan.id_kota' => 'tbl_kota.id_kota'))
+	    ->select(array('tbl_pemesanan.*','tbl_pembayaran.status_pembayaran','tbl_produk.harga','tbl_kota.nm_kota','tbl_kota.tarif'))
+	    ->one();
+}else $dataTable = $db->from('tbl_pemesanan')
+	    ->leftJoin('tbl_pembayaran', array('tbl_pemesanan.id_pemesanan' => 'tbl_pembayaran.id_pemesanan'))
+	    ->select(array('tbl_pemesanan.*','tbl_pembayaran.status_pembayaran'))
+	    ->many();
 ?>
-<body>
-<div id="all">
-<?php 
-include "../template/header.php";
-?>
+
 <div id="content">
 <div class="container">
 	
-<?php
-if(isset($_GET['id_pemesanan'])){
-?>
-<!-- Detail transaksi-->
-<div class="row">
-	<div class="col-md-9 col-sm-12">
-		<div class="heading">
-			<h2>Detail Informasi Pembelian</h2>
-		</div>
-		<label for="nama_pemesan"><b>Nama Pemesan</b></label>
-		<input type="hidden" name="nama_pemesan" value="<?php echo $detailPesan['nama_pemesan'];?>"/>
-		<p class="form-control"><?php echo $detailPesan['nama_pemesan']; ?></p>
-		
-		
-		<label for="alamat_pemesan"><b>Alamat Pemesan</b></label>
-		<input type="hidden" name="alamat_pemesan" value="<?php echo $detailPesan['alamat_pemesan'];?>"/>
-		<p class="form-control"><?php echo $detailPesan['alamat_pemesan']; ?></p>
-		
-		
-		<label for="no_telp"><b>Nomor Telepon</b></label>
-		<input type="hidden" name="no_telp" value="<?php echo $detailPesan['no_telp'];?>"/>
-		<p class="form-control"><?php echo $detailPesan['no_telp']; ?></p>
-		
-		
-		<label for="total_harga"><b>Total Harga</b></label>
-		<input type="hidden" name="total_harga" value="<?php echo $detailPesan['total_harga'];?>"/>
-		<p class="form-control"><?php echo $detailPesan['total_harga']; ?></p>
-		
-		
-		<label for="jumlah_pesan"><b>Jumlah Pesan</b></label>
-		<input type="hidden" name="jumlah_pesan" value="<?php echo $detailPesan['jumlah_pesan'];?>"/>
-		<p class="form-control"><?php echo $detailPesan['jumlah_pesan']; ?></p>
-	</div>
-	<div class="col-md-3 col-sm-12">
-		<?php include "../template/menu_admin.php"; ?>
-	</div>
-	<div class="col-md-9 col-sm-12">
-		<div class="heading">
-		  <h2>Detail Produk</h2>
-		</div>
-		<label for="nm_produk"><b>Nama Produk</b></label>
-		<p class="form-control"><?php echo $detailPesan['nm_produk']; ?></p>
-		
-		<label for="harga_produk"><b>Harga Produk</b></label>
-		<p class="form-control"><?php echo "Rp ".number_format($detailPesan['harga'],2,',','.'); ?></p>
-	</div>
-	<?php
-	if($detailPesan['jenis_produk'] == 'Undangan'){
-	?>
-	<div class="col-sm-12">
-		<div class="heading">
-			<h2>Detail Informasi Undangan</h2>
-			<label for="nama_mempelai"><b>Nama Mempelai</b></label>
-			<p class="form-control"><?php echo $detailPesan['nama_mempelai']; ?></p>
-			
-			<label for="nama_orangtua"><b>Nama Orang Tua</b></label>
-			<p class="form-control"><?php echo $detailPesan['nama_orangtua']; ?></p>
-			
-			
-			<label for="tgl_akadnikah"><b>Tanggal Akad Nikah</b></label>
-			<p class="form-control"><?php echo $detailPesan['tgl_akadnikah']; ?></p>
-			
-			
-			<label for="tgl_resepsi"><b>Tanggal Resepsi</b></label>
-			<p class="form-control"><?php echo $detailPesan['tgl_resepsi']; ?></p>
-			
-			
-			<label for="waktu_akadnikah"><b>Jam Akad Nikah</b></label>
-			<p class="form-control"><?php echo $detailPesan['waktu_akadnikah']; ?></p>
-			
-			
-			<label for="waktu_resepsi"><b>Jam Resepsi</b></label>
-			<p class="form-control"><?php echo $detailPesan['waktu_resepsi']; ?></p>
-			
-			
-			<label for="alamat_akadnikah"><b>Alamat Akad Nikah</b></label>
-			<p class="form-control"><?php echo $detailPesan['alamat_akadnikah']; ?></p>
-			
-			
-			<label for="alamat_resepsi"><b>Alamat Resepsi</b></label>
-			<p class="form-control"><?php echo $detailPesan['alamat_resepsi']; ?></p>
-			
-			
-			<label for="anggota_keluarga"><b>Anggota Keluarga Yang Mengundang</b></label>
-			<p class="form-control"><?php echo $detailPesan['anggota_keluarga']; ?></p>
-			
-			
-			<label for="foto_lokasi"><b>Foto Denah Lokasi</b></label>
-			<p class="form-control"><?php echo "<img src='$path' width='300' height='300'/>" ?></p>
-			</div>
-	</div>
-	<?php
-	}
-	?>
-</div>
-<!--akhir  Detail transaksi-->
-<?php
-}else{
-?>
+	
+	
+
 <!-- START OF CONTENT -->
 <div class="row bar mb-0">
 <div class="col-md-12">
-	<h2>Daftar Transaksi</h2>
+<?php
+if(isset($_GET['id_pemesanan'])){
+	echo "<h2>Detail Transaksi</h2>";
+	//detail transaksi
+	if(empty($detail)){
+		alert('danger','Transaksi tidak ditemukan');
+	}else{
+		$detailForm = array(
+				array(
+					"name"	=>	"input_group",
+					"list"	=>	array(
+						array(
+							"name"	=>	"nama_pemesan",
+							"label"	=>	"Nama Pemesan",
+							"type"	=>	"input",
+							"inputType"	=>	"text",
+							"col"	=>	"6",
+							"value"	=>  $detail['nama_pemesan'],
+							"readonly"	=> true
+						),
+						array(
+							"name"	=>	"nm_kota",
+							"label"	=>	"Kota Tujuan",
+							"type"	=>	"input",
+							"inputType"	=>	"text",
+							"col"	=>	"6",
+							"value"	=>  $detail['nm_kota'].'  '."Rp ".number_format($detail['tarif'],2,',','.'),
+							"readonly"	=> true
+						),
+						array(
+							"name"	=>	"alamat_pemesan",
+							"label"	=>	"Alamat Pemesan",
+							"type"	=>	"textarea",
+							"inputType"	=>	"text",
+							"col"	=> "12",
+							"value"	=>  $detail['alamat_pemesan'],
+							"readonly"	=> true
+						),
+						array(
+							"name"	=>	"no_telp",
+							"label"	=>	"Nomor Telpon",
+							"type"	=>	"input",
+							"inputType"	=>	"text",
+							"col"	=> "6",
+							"value"	=>  $detail['no_telp'],
+							"readonly"	=> true
+						),
+						array(
+							"name"	=>	"harga",
+							"label"	=>	"Harga Produk",
+							"type"	=>	"input",
+							"inputType"	=>	"number",
+							"readonly"	=> true,
+							"col"	=> "3",
+							"value"	=>  $detail['harga'],
+							"readonly"	=> true
+						),
+						array(
+							"name"	=>	"jumlah_pesan",
+							"label"	=>	"Jumlah Pesan",
+							"type"	=>	"input",
+							"inputType"	=>	"number",
+							"readonly"	=> true,
+							"col"	=> "3",
+							"value"	=>  $detail['jumlah_pesan'],
+							"readonly"	=> true
+						),
+						array(
+							"name"	=>	"total_harga",
+							"label"	=>	"Total Harga",
+							"type"	=>	"input",
+							"inputType"	=>	"number",
+							"value"	=> $detail['total_harga'],
+							"readonly"	=> true,
+							"col"	=> "12",
+							"readonly"	=> true
+						)
+					)
+				)
+			);
+		formGenerator($detailForm);
+	}
+?>
+<a class="btn btn-success" href="daftar-transaksi.php">Kembali >></a>
+<?php
+//detail transaksi
+}else{//daftar transaksi
+?>
+<h2>Daftar Transaksi</h2>
 <div class="table-responsive">
 <table class="table table-hover">
 <thead>
-	<tr>
-		<th>No</th>
+<tr>
+<th>No</th>
 <?php
 foreach($tableConf as $t){
 	echo "<th>".$t['caption']."</th>";
 }
 ?>
-		<th colspan="2">Aksi</th>
-	</tr>
+<th colspan=2>Aksi</th>
+</tr>
 </thead>
 <tbody>
 <?php
@@ -183,10 +178,11 @@ if(count($dataTable) == 0){
 			}
 			else echo "<td>".$r[$t['name']]."</td>";
 			if($t['name'] == 'status_pembayaran'){
-				if($r['status_pembayaran'] == 'Diproses'){
-					echo "<td><a class='btn btn-info btn-sm' href='/skripsi/admin/verifikasi-pembayaran.php?id_pemesanan=".$r['id_pemesanan']."'>Verifikasi Pembayaran</span></td>";
-				}else if($r['status_pembayaran'] == 'Diterima') echo "<td><span class='badge badge-info'>Memproses Pesanan</span></td>";
-				else echo "<td><span class='badge badge-warning'>Menunggu Pembayaran</span></td>";
+				if($r['status_pembayaran'] == null){
+					echo "<td><a class='btn btn-info btn-sm' href='konfirmasi-pembayaran.php?id_pemesanan=".$r['id_pemesanan']."'>Konfirmasi Pembayaran</a></td>";
+				}else if($r['status_pembayaran'] == 'Diproses') echo "<td><span class='badge badge-warning'>Menunggu Verifikasi</span></td>";
+				else if($r['status_pembayaran'] == 'Diterima') echo "<td><a class='btn btn-template-main btn-sm' href='cetak-bukti.php?id_pemesanan=".$r['id_pemesanan']."'>Cetak Bukti</a></td>";
+				else echo "<td><a class='btn btn-info btn-sm'>Menunggu Konfirmasi Ulang</a></td>";
 			}
 		}
 		$no++;
@@ -194,19 +190,22 @@ if(count($dataTable) == 0){
 	}
 }
 ?>
-	</tbody>	
+</tbody>	
 </table>
 </div>
-</div>
-</div>
+
 <?php
-}
+} //daftar transaksi
 ?>
+</div>
+</div>
+<!-- END OF CONTENT -->
+
 <!-- FOOTER -->
 </div>
-<?php include "../template/footer.php"; ?>
+<?php include "template/footer.php"; ?>
 </div>
 <!-- Javascript files-->
-<?php include "../template/javascript.php"; ?>
+<?php include "template/javascript.php"; ?>
 </body>
 </html>

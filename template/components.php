@@ -41,7 +41,7 @@ function formGenerator($fields){
 	$disabled = "";
 	$readonly = "";
 	foreach($fields as $f){
-		if(!isset($f['value'])) $value = null;
+		if(!array_key_exists('value', $f)) $value = null;
 		else $value = $f['value'];
 		
 		if(isset($f['disabled'])) $disabled = 'disabled';
@@ -49,15 +49,22 @@ function formGenerator($fields){
 		if(isset($f['readonly'])) $disabled = 'readonly';
 		else $readonly = null;
 		
-		if($f['name'] == 'input_group'){
+		if($f['name'] == 'input_group'){	
 			echo "<div class='row'>";
 				foreach($f['list'] as $l){
+					if(isset($l['value'])) $value = $l['value'];
+					else $value = null;
+					
+					if(isset($l['disabled'])) $disabled = 'disabled';
+					else $disabled = null;
+					if(isset($l['readonly'])) $disabled = 'readonly';
+					else $readonly = null;
 					echo "<div class='col-sm-".$l['col']."'>";
 						switch($l['type']){
 							case "input" : 
 								echo '
 									<div class="form-group">
-					                    <label for="'.$l['name'].'" '.$disabled.' '.$readonly.'>'.$l['label'].'</label>
+					                    <label for="'.$l['name'].'">'.$l['label'].'</label>
 					                    <input id="'.$l['name'].'" name="'.$l['name'].'" type="'.$l['inputType'].'" class="form-control" value="'.$value.'" '.$disabled.' '.$readonly.'>
 									</div>
 								';
@@ -65,7 +72,7 @@ function formGenerator($fields){
 							case "textarea": 
 								echo '
 									<div class="form-group">
-					                    <label for="'.$l['name'].'" '.$disabled.' '.$readonly.'>'.$l['label'].'</label>
+					                    <label for="'.$l['name'].'">'.$l['label'].'</label>
 					                    <textarea id="'.$l['name'].'" name="'.$l['name'].'" class="form-control" value="'.$value.'" '.$disabled.' '.$readonly.'>'.$value.'</textarea>
 									</div>
 								';
@@ -73,7 +80,7 @@ function formGenerator($fields){
 							case "select" : 
 								echo '
 									<div class="form-group">
-										<label for="'.$l['name'].'" '.$disabled.' '.$readonly.'>'.$l['label'].'</label>
+										<label for="'.$l['name'].'">'.$l['label'].'</label>
 										<select id="'.$l['name'].'" name="'.$l['name'].'" class="form-control" value="'.$value.'" '.$disabled.' '.$readonly.'>';
 									foreach($l['options'] as $d){
 										echo '<option value="'.$d[$l['optionValue']].'" '.$disabled.' '.$readonly.'>'.$d[$l['optionLabel']].'</option>';
@@ -91,7 +98,7 @@ function formGenerator($fields){
 				case "input" : 
 					echo '
 						<div class="form-group">
-		                    <label for="'.$f['name'].'" '.$disabled.' '.$readonly.'>'.$f['label'].'</label>
+		                    <label for="'.$f['name'].'">'.$f['label'].'</label>
 		                    <input id="'.$f['name'].'" name="'.$f['name'].'" type="'.$f['inputType'].'" class="form-control" value="'.$value.'" '.$disabled.' '.$readonly.'>
 						</div>
 					';
@@ -99,7 +106,7 @@ function formGenerator($fields){
 				case "textarea": 
 					echo '
 						<div class="form-group">
-		                    <label for="'.$f['name'].'" '.$disabled.' '.$readonly.'>'.$f['label'].'</label>
+		                    <label for="'.$f['name'].'">'.$f['label'].'</label>
 		                    <textarea id="'.$f['name'].'" name="'.$f['name'].'" class="form-control" value="'.$value.'" '.$disabled.' '.$readonly.'>'.$value.'</textarea>
 						</div>
 					';
@@ -107,7 +114,7 @@ function formGenerator($fields){
 				case "select" : 
 					echo '
 						<div class="form-group">
-							<label for="'.$f['name'].'" '.$disabled.' '.$readonly.'>'.$f['label'].'</label>
+							<label for="'.$f['name'].'">'.$f['label'].'</label>
 							<select id="'.$f['name'].'" name="'.$f['name'].'" class="form-control" value="'.$value.'" '.$disabled.' '.$readonly.'>';
 						foreach($f['options'] as $d){
 							if($d[$f['optionValue']] == $f['value']){

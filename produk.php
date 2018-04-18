@@ -46,11 +46,8 @@ include "template/components.php";
 		  </div>
 	</div>
 	<div class="col-sm-12">
-		<form method="GET" action="pesan-produk.php">
+		<form method="POST" action="pesan-produk.php">
 		<div class="form-group">
-			<label>Jumlah Pesan</label>
-			<input type="number" name="jumlah_pesan" />
-			<input type="hidden" name="jenis" value="<?php echo $detail['jenis_produk']; ?>" />
 			<input type="hidden" name="id_produk" value="<?php echo $detail['id_produk']; ?>" />
 		</div>
 		<button type="submit" class="btn btn-lg btn-success">Lanjutkan Pemesanan >></button>

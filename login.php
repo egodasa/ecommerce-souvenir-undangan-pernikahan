@@ -1,7 +1,8 @@
 <?php
 session_start();
+require "koneksi.php";
 if(isset($_SESSION['username'])){
-	header('Location: /skripsi');
+	header('Location: '.$base_url);
 }
 include "template/components.php";
 $pesan = '';
@@ -24,7 +25,6 @@ if(isset($_GET['err'])){
 	}	
 }
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
-	require "koneksi.php";
 	$data = $_POST;
 	$hasil = $db->from('tbl_user')->where(array('username' => $data['username'], 'password' => md5($data['password'])))->select()->one();
 	if(empty($hasil)){
@@ -33,7 +33,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 		$_SESSION['username'] = $hasil['username'];
 		$_SESSION['tipe_user'] = $hasil['tipe_user'];
 		$_SESSION['id_user'] = $hasil['id_user'];
-	header('Location: /skripsi');
+	header('Location: '.$base_url);
 	}
 }
 include "template/head.php";

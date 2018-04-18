@@ -1,6 +1,7 @@
 <?php
 session_start();
 require "koneksi.php";
+$judul = 'Toko Asmindar';
 if(!isset($_GET['page'])) $page = 1;
 else $page = $_GET['page'];
 $offset = ($page-1)*4;
