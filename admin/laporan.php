@@ -35,7 +35,7 @@ $tableConf = array(
 );
 if(!isset($_GET['awal'])){
 	$dataTable = $db->from('tbl_pemesanan')
-	->join('tbl_produk','tbl_pemesanan.id_produk','tbl_produk.id_produk')
+	->join('tbl_produk',array('tbl_pemesanan.id_produk' => 'tbl_produk.id_produk'))
 	->many();
 }else $dataTable = $db->sql('select * from tbl_pemesanan join tbl_produk on tbl_pemesanan.id_produk = tbl_produk.id_produk where tgl_pesan between "'.$awal.'" and "'.$akhir.'"')->many();
 ?>
