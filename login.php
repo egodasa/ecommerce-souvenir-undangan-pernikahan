@@ -1,6 +1,7 @@
 <?php
 session_start();
 require "koneksi.php";
+$judul = "Login/Registrasi";
 if(isset($_SESSION['username'])){
 	header('Location: '.$base_url);
 }

@@ -3,7 +3,7 @@ session_start();
 require "../koneksi.php";
 cekLogin('Admin');
 require_once __DIR__ . '/../vendor/autoload.php';
-$mpdf = new \Mpdf\Mpdf(['tempDir' => __DIR__ . '/../tsmp']);
+$mpdf = new \Mpdf\Mpdf(['tempDir' => __DIR__ . '/../tmp']);
 
 $awal = date('Y-m-d');
 $akhir = date('Y-m-d');
@@ -35,9 +35,17 @@ $tableConf = array(
 );
 if(!isset($_GET['awal'])){
 	$dataTable = $db->from('tbl_pemesanan')
-	->join('tbl_produk','tbl_pemesanan.id_produk','tbl_produk.id_produk')
+	->leftJoin('tbl_pembayaran', array('tbl_pemesanan.id_pemesanan' => 'tbl_pembayaran.id_pemesanan'))
+	->join('tbl_produk',array('tbl_pemesanan.id_produk' => 'tbl_produk.id_produk'))
+	->where('tbl_pembayaran.status_pembayaran', 'Diterima')
 	->many();
-}else $dataTable = $db->sql('select * from tbl_pemesanan join tbl_produk on tbl_pemesanan.id_produk = tbl_produk.id_produk where tgl_pesan between "'.$awal.'" and "'.$akhir.'"')->many();
+}else {
+	$dataTable = $db->from('tbl_pemesanan')
+	->leftJoin('tbl_pembayaran', array('tbl_pemesanan.id_pemesanan' => 'tbl_pembayaran.id_pemesanan'))
+	->join('tbl_produk',array('tbl_pemesanan.id_produk' => 'tbl_produk.id_produk'))
+	->where('tbl_pembayaran.status_pembayaran', 'Diterima')
+	->many();
+}
 $html = '';
 $html .= '<style>
 body{
@@ -61,7 +69,7 @@ h1{
 	text-align: center;
 }
 </style>';
-$html .='<h2>Laporan Penjualan</h2>';
+$html .='<h2>Laporan Penjualan Toko Asmidar</h2>';
 $html .='<hr>';
 $html .= '<table class="table table-hover">
 <thead>

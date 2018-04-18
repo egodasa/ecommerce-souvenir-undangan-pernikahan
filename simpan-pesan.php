@@ -17,5 +17,6 @@ $id_pemesanan = $now->format("mdYHisu");
 	"id_user"			=> $_SESSION['id_user']
 	);
 	$db->from('tbl_pemesanan')->insert($pemesanan)->execute();
+	$msg->info('Transaksi berhasil dilakukan. Silahkan lakukan konfirmasi pembayaran pada menu DAFTAR TRANSAKSI');
 header('Location: index.php');
 ?>

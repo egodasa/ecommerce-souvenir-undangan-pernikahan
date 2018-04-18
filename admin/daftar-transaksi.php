@@ -1,15 +1,15 @@
 <?php
 session_start();
-require "koneksi.php";
+require "../koneksi.php";
 cekLogin('Admin');
 $judul = "Daftar Transaksi";
-include "template/head.php";
-include "template/components.php";
+include "../template/head.php";
+include "../template/components.php";
 ?>
 <body>
 <div id="all">
 <?php
-include "template/header.php";
+include "../template/header.php";
 
 $tableConf = array(
 	array(
@@ -39,6 +39,7 @@ if(isset($_GET['id_pemesanan'])){
 	    ->select(array('tbl_pemesanan.*','tbl_pembayaran.status_pembayaran','tbl_produk.harga','tbl_kota.nm_kota','tbl_kota.tarif'))
 	    ->one();
 }else $dataTable = $db->from('tbl_pemesanan')
+		->distinct()
 	    ->leftJoin('tbl_pembayaran', array('tbl_pemesanan.id_pemesanan' => 'tbl_pembayaran.id_pemesanan'))
 	    ->select(array('tbl_pemesanan.*','tbl_pembayaran.status_pembayaran'))
 	    ->many();
@@ -53,6 +54,7 @@ if(isset($_GET['id_pemesanan'])){
 <!-- START OF CONTENT -->
 <div class="row bar mb-0">
 <div class="col-md-12">
+<?php $msg->display(); ?>
 <?php
 if(isset($_GET['id_pemesanan'])){
 	echo "<h2>Detail Transaksi</h2>";
@@ -179,11 +181,10 @@ if(count($dataTable) == 0){
 			}
 			else echo "<td>".$r[$t['name']]."</td>";
 			if($t['name'] == 'status_pembayaran'){
-				if($r['status_pembayaran'] == null){
-					echo "<td><a class='btn btn-info btn-sm' href='konfirmasi-pembayaran.php?id_pemesanan=".$r['id_pemesanan']."'>Konfirmasi Pembayaran</a></td>";
-				}else if($r['status_pembayaran'] == 'Diproses') echo "<td><span class='badge badge-warning'>Menunggu Verifikasi</span></td>";
-				else if($r['status_pembayaran'] == 'Diterima') echo "<td><a class='btn btn-template-main btn-sm' href='cetak-bukti.php?id_pemesanan=".$r['id_pemesanan']."'>Cetak Bukti</a></td>";
-				else echo "<td><a class='btn btn-info btn-sm'>Menunggu Konfirmasi Ulang</a></td>";
+				if($r['status_pembayaran'] == 'Diproses'){
+					echo "<td><a class='btn btn-info btn-sm' href='".$base_url."/admin/verifikasi-pembayaran.php?id_pemesanan=".$r['id_pemesanan']."'>Verifikasi Pembayaran</span></td>";
+				}else if($r['status_pembayaran'] == 'Diterima') echo "<td><span class='badge badge-info'>Memproses Pesanan</span></td>";
+				else echo "<td><span class='badge badge-warning'>Menunggu Pembayaran Ulang</span></td>";
 			}
 		}
 		$no++;
@@ -204,9 +205,9 @@ if(count($dataTable) == 0){
 
 <!-- FOOTER -->
 </div>
-<?php include "template/footer.php"; ?>
+<?php include "../template/footer.php"; ?>
 </div>
 <!-- Javascript files-->
-<?php include "template/javascript.php"; ?>
+<?php include "../template/javascript.php"; ?>
 </body>
 </html>

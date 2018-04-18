@@ -23,7 +23,7 @@ include "template/components.php";
 <div class="container">
 <div class="row bar">
 <div class="col-md-12">
-  <p class="text-muted lead text-center">Menjual Souvenir dan Undangan Pernikahan terbaik...</p>
+  <p class="text-muted lead text-center"><?php $msg->display(); ?></p>
   <div class="products-big">
 	<div class="row products">
 <?php

@@ -40,6 +40,7 @@ if(isset($_GET['id_pemesanan'])){
 	    ->where('id_user',$_SESSION['id_user'])
 	    ->one();
 }else $dataTable = $db->from('tbl_pemesanan')
+		->distinct()
 	    ->leftJoin('tbl_pembayaran', array('tbl_pemesanan.id_pemesanan' => 'tbl_pembayaran.id_pemesanan'))
 	    ->where('id_user',$_SESSION['id_user'])
 	    ->select(array('tbl_pemesanan.*','tbl_pembayaran.status_pembayaran'))
@@ -55,6 +56,7 @@ if(isset($_GET['id_pemesanan'])){
 <!-- START OF CONTENT -->
 <div class="row bar mb-0">
 <div class="col-md-12">
+<?php $msg->display(); ?>
 <?php
 if(isset($_GET['id_pemesanan'])){
 	echo "<h2>Detail Transaksi</h2>";
@@ -71,17 +73,8 @@ if(isset($_GET['id_pemesanan'])){
 							"label"	=>	"Nama Pemesan",
 							"type"	=>	"input",
 							"inputType"	=>	"text",
-							"col"	=>	"6",
+							"col"	=>	"12",
 							"value"	=>  $detail['nama_pemesan'],
-							"readonly"	=> true
-						),
-						array(
-							"name"	=>	"nm_kota",
-							"label"	=>	"Kota Tujuan",
-							"type"	=>	"input",
-							"inputType"	=>	"text",
-							"col"	=>	"6",
-							"value"	=>  $detail['nm_kota'].'  '."Rp ".number_format($detail['tarif'],2,',','.'),
 							"readonly"	=> true
 						),
 						array(
@@ -185,7 +178,7 @@ if(count($dataTable) == 0){
 					echo "<td><a class='btn btn-info btn-sm' href='konfirmasi-pembayaran.php?id_pemesanan=".$r['id_pemesanan']."'>Konfirmasi Pembayaran</a></td>";
 				}else if($r['status_pembayaran'] == 'Diproses') echo "<td><span class='badge badge-warning'>Menunggu Verifikasi</span></td>";
 				else if($r['status_pembayaran'] == 'Diterima') echo "<td><a class='btn btn-template-main btn-sm' href='cetak-bukti.php?id_pemesanan=".$r['id_pemesanan']."'>Cetak Bukti</a></td>";
-				else echo "<td><a class='btn btn-info btn-sm' href='konfirmasi-pembayaran.php?id_pemesanan=".$r['id_pemesanan']."'>Konfirmasi Ulang</a></td>";
+				else if($r['status_pembayaran'] == 'Ditolak') echo "<td><a class='btn btn-info btn-sm' href='konfirmasi-pembayaran.php?id_pemesanan=".$r['id_pemesanan']."&konfirmasi=ulang'>Konfirmasi Ulang</a></td>";
 			}
 		}
 		$no++;

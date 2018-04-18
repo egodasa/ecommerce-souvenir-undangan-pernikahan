@@ -2,6 +2,7 @@
 session_start();
 require 'koneksi.php';
 cekLogin('all');
+$judul = "Cek Pesan";
 $hrg_kota = $db->from('tbl_kota')->where('id_kota',$_POST['id_kota'])->one();
 $hrg_produk = $db->from('tbl_produk')->where('id_produk',$_POST['id_produk'])->one();
 

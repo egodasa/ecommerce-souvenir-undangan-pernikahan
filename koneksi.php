@@ -1,10 +1,11 @@
 <?php
 require_once __DIR__ . '/vendor/autoload.php';
 include "db.php";
-$base_url = "http://localhost/rotan";
+$base_url= "http://localhost/rotan";
 $db = new Sparrow();
 $db->show_sql = true;
-$db->setDb("mysqli://root:qwe123*iop@localhost/dbsouvenir");
+$db->setDb("mysqli://root:qwe123*iop@localhost/dbrotan");
+
 function cekLogin($x){
 	$username = $_SESSION['username'];
 	if(!isset($username)){
@@ -15,4 +16,5 @@ function cekLogin($x){
 		}
 	}
 }
+$msg = new \Plasticbrain\FlashMessages\FlashMessages();
 ?>

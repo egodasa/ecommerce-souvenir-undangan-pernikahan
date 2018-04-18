@@ -2,9 +2,11 @@
 session_start();
 require "../koneksi.php";
 cekLogin('Admin');
+$judul = "Verifikasi Pembayaran";
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	$data = $_POST;
 	$db->from('tbl_pembayaran')->where('id_pemesanan',$_GET['id_pemesanan'])->update($data)->execute();
+	$msg->success('Verifikasi pembayaran berhasil dilakukan');
 	header('Location: daftar-transaksi.php');
 }else{
 	$detail = $db->from('tbl_pembayaran')

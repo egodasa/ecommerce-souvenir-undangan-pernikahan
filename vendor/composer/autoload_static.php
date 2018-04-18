@@ -32,6 +32,23 @@ class ComposerStaticInitd1ae2cafa4c093fee307ff62ad3e908c
         ),
     );
 
+    public static $prefixesPsr0 = array (
+        'V' => 
+        array (
+            'Viocon' => 
+            array (
+                0 => __DIR__ . '/..' . '/usmanhalalit/viocon/src',
+            ),
+        ),
+        'P' => 
+        array (
+            'Pixie' => 
+            array (
+                0 => __DIR__ . '/..' . '/usmanhalalit/pixie/src',
+            ),
+        ),
+    );
+
     public static $classMap = array (
         'FPDF_TPL' => __DIR__ . '/..' . '/setasign/fpdi/fpdf_tpl.php',
         'FPDI' => __DIR__ . '/..' . '/setasign/fpdi/fpdi.php',
@@ -47,6 +64,7 @@ class ComposerStaticInitd1ae2cafa4c093fee307ff62ad3e908c
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInitd1ae2cafa4c093fee307ff62ad3e908c::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInitd1ae2cafa4c093fee307ff62ad3e908c::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitd1ae2cafa4c093fee307ff62ad3e908c::$prefixesPsr0;
             $loader->classMap = ComposerStaticInitd1ae2cafa4c093fee307ff62ad3e908c::$classMap;
 
         }, null, ClassLoader::class);
