@@ -14,6 +14,7 @@ class ComposerStaticInitd1ae2cafa4c093fee307ff62ad3e908c
         'P' => 
         array (
             'Psr\\Log\\' => 8,
+            'Plasticbrain\\FlashMessages\\' => 27,
         ),
         'M' => 
         array (
@@ -26,26 +27,13 @@ class ComposerStaticInitd1ae2cafa4c093fee307ff62ad3e908c
         array (
             0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
         ),
+        'Plasticbrain\\FlashMessages\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/plasticbrain/php-flash-messages/src',
+        ),
         'Mpdf\\' => 
         array (
             0 => __DIR__ . '/..' . '/mpdf/mpdf/src',
-        ),
-    );
-
-    public static $prefixesPsr0 = array (
-        'V' => 
-        array (
-            'Viocon' => 
-            array (
-                0 => __DIR__ . '/..' . '/usmanhalalit/viocon/src',
-            ),
-        ),
-        'P' => 
-        array (
-            'Pixie' => 
-            array (
-                0 => __DIR__ . '/..' . '/usmanhalalit/pixie/src',
-            ),
         ),
     );
 
@@ -64,7 +52,6 @@ class ComposerStaticInitd1ae2cafa4c093fee307ff62ad3e908c
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInitd1ae2cafa4c093fee307ff62ad3e908c::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInitd1ae2cafa4c093fee307ff62ad3e908c::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInitd1ae2cafa4c093fee307ff62ad3e908c::$prefixesPsr0;
             $loader->classMap = ComposerStaticInitd1ae2cafa4c093fee307ff62ad3e908c::$classMap;
 
         }, null, ClassLoader::class);

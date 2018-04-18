@@ -36,7 +36,7 @@ if(isset($_GET['id_pemesanan'])){
 	    ->join('tbl_produk', array('tbl_pemesanan.id_produk' => 'tbl_produk.id_produk'))
 	    ->join('tbl_kota', array('tbl_pemesanan.id_kota' => 'tbl_kota.id_kota'))
 	    ->select(array('tbl_pemesanan.*','tbl_pembayaran.status_pembayaran','tbl_produk.harga','tbl_kota.nm_kota','tbl_kota.tarif'))
-	    ->where('id_pemesanan',$_GET['id_pemesanan'])
+	    ->where('tbl_pemesanan.id_pemesanan',$_GET['id_pemesanan'])
 	    ->where('id_user',$_SESSION['id_user'])
 	    ->one();
 }else $dataTable = $db->from('tbl_pemesanan')
@@ -178,7 +178,7 @@ if(count($dataTable) == 0){
 					echo "<td><a class='btn btn-info btn-sm' href='konfirmasi-pembayaran.php?id_pemesanan=".$r['id_pemesanan']."'>Konfirmasi Pembayaran</a></td>";
 				}else if($r['status_pembayaran'] == 'Diproses') echo "<td><span class='badge badge-warning'>Menunggu Verifikasi</span></td>";
 				else if($r['status_pembayaran'] == 'Diterima') echo "<td><a class='btn btn-template-main btn-sm' href='cetak-bukti.php?id_pemesanan=".$r['id_pemesanan']."'>Cetak Bukti</a></td>";
-				else if($r['status_pembayaran'] == 'Ditolak') echo "<td><a class='btn btn-info btn-sm' href='konfirmasi-pembayaran.php?id_pemesanan=".$r['id_pemesanan']."&konfirmasi=ulang'>Konfirmasi Ulang</a></td>";
+				else if($r['status_pembayaran'] == 'Ditolak') echo "<td><a class='btn btn-info btn-sm' href='konfirmasi-pembayaran.php?id_pemesanan=".$r['id_pemesanan']."&ulang=ya'>Konfirmasi Ulang</a></td>";
 			}
 		}
 		$no++;

@@ -39,7 +39,7 @@ if(!isset($_GET['awal'])){
 	->join('tbl_produk',array('tbl_pemesanan.id_produk' => 'tbl_produk.id_produk'))
 	->where('tbl_pembayaran.status_pembayaran', 'Diterima')
 	->many();
-}else $dataTable = $db->sql('select * from tbl_pemesanan join tbl_produk on tbl_pemesanan.id_produk = tbl_produk.id_produk where tgl_pesan between "'.$awal.'" and "'.$akhir.'"')->many();
+}else $dataTable = $db->sql('select * from tbl_pemesanan join tbl_produk on tbl_pemesanan.id_produk = tbl_produk.id_produk where tbl_pembayaran.status_pembayaran = "Diterima" and tgl_pesan between "'.$awal.'" and "'.$akhir.'"')->many();
 ?>
 <body>
 <div id="all">
@@ -55,13 +55,6 @@ include "../template/header.php";
 <div class="col-md-12">
 <h2>Laporan Transaksi</h2>
 <form method="GET" action="">
-<?php
-echo $db->from('tbl_pemesanan')
-	->leftJoin('tbl_pembayaran', array('tbl_pemesanan.id_pemesanan' => 'tbl_pembayaran.id_pemesanan'))
-	->join('tbl_produk',array('tbl_pemesanan.id_produk' => 'tbl_produk.id_produk'))
-	->where('tbl_pembayaran.status_pembayaran', 'Diterima')
-	->sql();
-?>
 <div class="row">
 	<div class="col-sm-4">
 		<div class="form-group">

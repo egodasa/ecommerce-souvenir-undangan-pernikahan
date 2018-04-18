@@ -219,32 +219,29 @@
         ]
     },
     {
-        "name": "usmanhalalit/viocon",
-        "version": "1.0.1",
+        "name": "plasticbrain/php-flash-messages",
+        "version": "v1.0.1",
         "version_normalized": "1.0.1.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/usmanhalalit/viocon.git",
-            "reference": "0878afee16f15355971fb95bf3c6d297aceff35d"
+            "url": "https://github.com/plasticbrain/PhpFlashMessages.git",
+            "reference": "b565762619342057ce561de20d0f2f6e14f9aa77"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/usmanhalalit/viocon/zipball/0878afee16f15355971fb95bf3c6d297aceff35d",
-            "reference": "0878afee16f15355971fb95bf3c6d297aceff35d",
+            "url": "https://api.github.com/repos/plasticbrain/PhpFlashMessages/zipball/b565762619342057ce561de20d0f2f6e14f9aa77",
+            "reference": "b565762619342057ce561de20d0f2f6e14f9aa77",
             "shasum": ""
         },
         "require": {
-            "php": ">=5.3.0"
+            "php": ">=5.4.0"
         },
-        "require-dev": {
-            "phpunit/phpunit": "3.7.*"
-        },
-        "time": "2013-07-13T19:54:56+00:00",
+        "time": "2016-04-01T08:39:38+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
-            "psr-0": {
-                "Viocon": "src/"
+            "psr-4": {
+                "Plasticbrain\\FlashMessages\\": "src/"
             }
         },
         "notification-url": "https://packagist.org/downloads/",
@@ -253,76 +250,16 @@
         ],
         "authors": [
             {
-                "name": "Muhammad Usman",
-                "email": "hi@usman.it",
-                "role": "Developer"
+                "name": "Mike Everhart",
+                "email": "mike@plasticbrain.net"
             }
         ],
-        "description": "A simple and flexible Dependency Injection container for PHP.",
-        "homepage": "https://github.com/usmanhalalit/viocon",
+        "description": "A modern take on PHP session-based flash messages",
         "keywords": [
-            "container",
-            "di",
-            "ioc",
-            "test"
-        ]
-    },
-    {
-        "name": "usmanhalalit/pixie",
-        "version": "2.0.0",
-        "version_normalized": "2.0.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/usmanhalalit/pixie.git",
-            "reference": "5820ef4f62c7be697767fd84830b7ad6fc057375"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/usmanhalalit/pixie/zipball/5820ef4f62c7be697767fd84830b7ad6fc057375",
-            "reference": "5820ef4f62c7be697767fd84830b7ad6fc057375",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.4.0",
-            "usmanhalalit/viocon": "1.0.*@dev"
-        },
-        "require-dev": {
-            "mockery/mockery": "0.9.4",
-            "phpunit/phpunit": "^4.8"
-        },
-        "time": "2016-04-08T10:58:01+00:00",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "Pixie": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Muhammad Usman",
-                "email": "hi@usman.it",
-                "role": "Developer"
-            },
-            {
-                "name": "Pavel Puchkin",
-                "email": "i@neoascetic.me",
-                "role": "Developer"
-            }
-        ],
-        "description": "A lightweight, expressive, framework agnostic query builder for PHP.",
-        "homepage": "https://github.com/usmanhalalit/pixie",
-        "keywords": [
-            "database",
-            "mysql",
-            "postgresql",
-            "query builder",
-            "sql",
-            "sqlite"
+            "bootstrap",
+            "flash",
+            "messages",
+            "session"
         ]
     }
 ]
