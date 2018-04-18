@@ -2,6 +2,7 @@
 session_start();
 require 'koneksi.php';
 cekLogin('all');
+$judul = 'Cek Pesan';
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
 include "template/head.php";
 ?>

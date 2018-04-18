@@ -1,6 +1,7 @@
 <?php
 session_start();
 require "../koneksi.php";
+$judul = 'Kelola User';
 cekLogin('Admin');
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	$db->from('tbl_user')->insert($_POST)->execute();

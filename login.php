@@ -1,5 +1,7 @@
 <?php
 session_start();
+require "koneksi.php";
+$judul = 'Login/Registrasi';
 if(isset($_SESSION['username'])){
 	header('Location: /skripsi');
 }
@@ -24,7 +26,6 @@ if(isset($_GET['err'])){
 	}	
 }
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
-	require "koneksi.php";
 	$data = $_POST;
 	$hasil = $db->from('tbl_user')->where(array('username' => $data['username'], 'password' => md5($data['password'])))->select()->one();
 	if(empty($hasil)){

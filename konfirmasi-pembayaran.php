@@ -2,6 +2,7 @@
 session_start();
 require "koneksi.php";
 cekLogin('Pelanggan');
+$judul = 'Konfirmasi Pembayaran';
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	$data = $_POST;
 	$data['foto_bukti'] = $_FILES['foto_bukti']['name'];

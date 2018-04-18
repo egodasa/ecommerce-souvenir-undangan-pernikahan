@@ -2,6 +2,7 @@
 session_start();
 require "koneksi.php";
 cekLogin('Pelanggan');
+$judul = 'Daftar Transaksi';
 include "template/head.php";
 ?>
 <body>

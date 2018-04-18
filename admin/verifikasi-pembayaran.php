@@ -1,6 +1,7 @@
 <?php
 session_start();
 require "../koneksi.php";
+$judul = 'Verifikasi Pembayaran';
 cekLogin('Admin');
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	$data = $_POST;

@@ -8,7 +8,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 <html><head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Souvenir</title>
+    <title><?php echo $judul; ?></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
@@ -17,7 +17,6 @@ require_once __DIR__ . '/../vendor/autoload.php';
     <!-- Font Awesome CSS-->
     <link rel="stylesheet" href="<?php echo $base_url;?>/vendor/font-awesome/css/font-awesome.min.css">
     <!-- Google fonts - Roboto-->
-    <link rel="stylesheet" href="<?php echo $base_url;?>/https://fonts.googleapis.com/css?family=Roboto:300,400,700">
     <!-- Bootstrap Select-->
     <link rel="stylesheet" href="<?php echo $base_url;?>/vendor/bootstrap-select/css/bootstrap-select.min.css">
     <!-- owl carousel-->

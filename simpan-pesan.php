@@ -1,7 +1,6 @@
 <?php
 session_start();
 require "koneksi.php";
-print_r($_POST);
 $data = $_POST;
 $now = DateTime::createFromFormat('U.u', microtime(true));
 $id_pemesanan = $now->format("mdYHisu");

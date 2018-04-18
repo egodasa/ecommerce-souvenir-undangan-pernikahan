@@ -1,6 +1,7 @@
 <?php
 session_start();
 require "../koneksi.php";
+$judul = 'Laporan Transaksi';
 cekLogin('Admin');
 include "../template/head.php";
 

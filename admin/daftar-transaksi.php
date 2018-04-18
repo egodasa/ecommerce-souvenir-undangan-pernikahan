@@ -1,6 +1,7 @@
 <?php
 session_start();
 require "../koneksi.php";
+$judul = 'Daftar Transaksi';
 cekLogin('Admin');
 if(isset($_GET['id_pemesanan'])){
 	$detailPesan = $db->from('tbl_pemesanan')
