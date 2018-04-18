@@ -31,5 +31,6 @@ $id_pemesanan = $now->format("mdYHisu");
 		);
 		$db->from('tbl_detail_pesanan')->insert($detail)->execute();
 	}
+$msg->info('Pembelian berhasil dilakukan. Silahkan lakukan konfirmasi pembayaran pada menu DAFTAR TRANSAKSI');
 header('Location: index.php');
 ?>

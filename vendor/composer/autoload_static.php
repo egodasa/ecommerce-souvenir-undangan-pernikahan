@@ -14,6 +14,7 @@ class ComposerStaticInitd1ae2cafa4c093fee307ff62ad3e908c
         'P' => 
         array (
             'Psr\\Log\\' => 8,
+            'Plasticbrain\\FlashMessages\\' => 27,
         ),
         'M' => 
         array (
@@ -25,6 +26,10 @@ class ComposerStaticInitd1ae2cafa4c093fee307ff62ad3e908c
         'Psr\\Log\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
+        ),
+        'Plasticbrain\\FlashMessages\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/plasticbrain/php-flash-messages/src',
         ),
         'Mpdf\\' => 
         array (

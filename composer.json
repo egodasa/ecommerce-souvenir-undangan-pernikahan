@@ -1,5 +1,6 @@
 {
     "require": {
-        "mpdf/mpdf": "^7.0"
+        "mpdf/mpdf": "^7.0",
+        "plasticbrain/php-flash-messages": "^1.0"
     }
 }

@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/vendor/autoload.php';
 include "db.php";
 $base_url= "http://localhost/skripsi";
 $db = new Sparrow();
@@ -14,4 +15,5 @@ function cekLogin($x){
 		}
 	}
 }
+$msg = new \Plasticbrain\FlashMessages\FlashMessages();
 ?>

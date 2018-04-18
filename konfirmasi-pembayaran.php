@@ -4,12 +4,20 @@ require "koneksi.php";
 cekLogin('Pelanggan');
 $judul = 'Konfirmasi Pembayaran';
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
+	parse_str($_SERVER['QUERY_STRING'], $qt);
 	$data = $_POST;
 	$data['foto_bukti'] = $_FILES['foto_bukti']['name'];
 	$path = "konfirmasi/";
 	$path = $path.basename($_FILES['foto_bukti']['name']);
 	move_uploaded_file($_FILES['foto_bukti']['tmp_name'], $path);
-	$db->from('tbl_pembayaran')->insert($data)->execute();
+	if(isset($qt['ulang'])){
+		$data['status_pembayaran'] = 'Diproses';
+		$msg->success('Konfirmasi ulang berhasil dilakukan.');
+		$db->from('tbl_pembayaran')->where('id_pemesanan',$qt['id_pemesanan'])->update($data)->execute();
+	}else {
+		$msg->success('Konfirmasi pembayaran berhasil dilakukan');
+		$db->from('tbl_pembayaran')->insert($data)->execute();
+	}
 	header('Location: daftar-transaksi.php');
 }else{
 include "template/head.php";
@@ -25,6 +33,9 @@ include "template/components.php";
 <div class="container">
 <div class="row">
 <div class="col-md-8 mx-auto">
+<?php
+$msg->display();
+?>
 <form enctype="multipart/form-data" method="POST" action="">
 <div class="heading text-center">
   <h2>Konfirmasi Pembayaran</h2>
