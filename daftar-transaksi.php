@@ -34,7 +34,7 @@ if(isset($_GET['id_pemesanan'])){
 	    ->leftJoin('tbl_pembayaran', array('tbl_pemesanan.id_pemesanan' => 'tbl_pembayaran.id_pemesanan'))
 	    ->join('tbl_produk', array('tbl_pemesanan.id_produk' => 'tbl_produk.id_produk'))
 	    ->select(array('tbl_pemesanan.*','tbl_pembayaran.status_pembayaran','tbl_produk.harga'))
-	    ->where('id_pemesanan',$_GET['id_pemesanan'])
+	    ->where('tbl_pemesanan.id_pemesanan',$_GET['id_pemesanan'])
 	    ->where('id_user',$_SESSION['id_user'])
 	    ->one();
 }else $dataTable = $db->from('tbl_pemesanan')
