@@ -2,6 +2,7 @@
 session_start();
 include "koneksi.php";
 cekLogin('Pelanggan');
+$judul = "Pesan Produk";
 if($_SERVER['REQUEST_METHOD'] == 'POST' || !empty($_POST)) {
 $detail = $db->from('tbl_produk')->where('id_produk',$_POST['id_produk'])->select()->one();
 include "template/head.php";

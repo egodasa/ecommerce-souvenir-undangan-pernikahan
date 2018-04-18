@@ -59,14 +59,23 @@ $pembeli = array(
 			),
 			array(
 				"name"	=>	"id_kota",
-				"label"	=>	"Kota Pemesan",
+				"label"	=>	"Kota Tujuan",
 				"type"	=>	"select",
 				"options" => $db->from('tbl_kota')->many(),
 				"optionValue"	=> "id_kota",
 				"optionLabel"	=> "nm_kota",
-				"col"	=> "6",
+				"col"	=> "3",
 				"value"	=>  $_POST['id_kota'],
 				"readonly"	=> true
+			),
+			array(
+				"name"	=>	"kota",
+				"label"	=>	"Tarif",
+				"type"	=>	"input",
+				"inputType"	=>	"text",
+				"col"	=>	"3",
+				"value"	=>  "Rp ".number_format($hrg_kota['tarif'],2,',','.'),
+				"disabled"	=> true
 			),
 			array(
 				"name"	=>	"alamat_pemesan",
@@ -97,13 +106,22 @@ $pembeli = array(
 				"readonly"	=> true
 			),
 			array(
+				"name"	=>	"harga_produk",
+				"label"	=>	"Harga Produk",
+				"type"	=>	"input",
+				"inputType"	=>	"text",
+				"col"	=>	"4",
+				"value"	=>  "Rp ".number_format($hrg_produk['harga'],2,',','.'),
+				"disabled"	=> true
+			),
+			array(
 				"name"	=>	"total_harga",
 				"label"	=>	"Total Harga",
 				"type"	=>	"input",
 				"inputType"	=>	"number",
 				"value"	=> ($_POST['jumlah_pesan'] * $hrg_produk['harga']) + $hrg_kota['tarif'],
 				"readonly"	=> true,
-				"col"	=> "12",
+				"col"	=> "8",
 				"readonly"	=> true
 			),
 			array(
