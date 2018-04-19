@@ -50,7 +50,7 @@ include "template/components.php";
 		<form method="GET" action="pesan-produk.php">
 		<div class="form-group">
 			<label>Jumlah Pesan</label>
-			<input type="number" name="jumlah_pesan" />
+			<input type="number" name="jumlah_pesan" required />
 			<input type="hidden" name="jenis" value="<?php echo $detail['jenis_produk']; ?>" />
 			<input type="hidden" name="id_produk" value="<?php echo $detail['id_produk']; ?>" />
 		</div>

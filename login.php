@@ -50,20 +50,47 @@ include "template/head.php";
                 <h2 class="text-uppercase">Buat Akun</h2>
                 <p>Pembelian pada website ini hanya bisa dilakukan jika Anda sudah punya akun</p>
                 <hr>
-                <p><?php echo $pesandaftar; ?></p>
+                <p><?php
+                echo $pesandaftar;
+                $registrasiForm = array(
+							array(
+								"name"	=>	"username",
+								"label"	=>	"Username",
+								"type"	=>	"input",
+								"inputType"	=>	"text",
+							),
+							array(
+								"name"	=>	"email",
+								"label"	=>	"Email",
+								"type"	=>	"input",
+								"inputType"	=>	"email",
+							),
+							array(
+								"name"	=>	"password",
+								"label"	=>	"Password",
+								"type"	=>	"input",
+								"inputType"	=>	"password",
+							)
+						);
+                $loginForm = array(
+							array(
+								"name"	=>	"username",
+								"label"	=>	"Username",
+								"type"	=>	"input",
+								"inputType"	=>	"text",
+							),
+							array(
+								"name"	=>	"password",
+								"label"	=>	"Password",
+								"type"	=>	"input",
+								"inputType"	=>	"password",
+							)
+						);
+                ?></p>
                 <form action="registrasi.php" method="post">
-                  <div class="form-group">
-                    <label for="username">Username</label>
-                    <input id="username" name="username" type="text" class="form-control">
-                  </div>
-                  <div class="form-group">
-                    <label for="email">Email</label>
-                    <input id="email" name="email" type="email" class="form-control">
-                  </div>
-                  <div class="form-group">
-                    <label for="password">Password</label>
-                    <input id="password" name="password" type="password" class="form-control">
-                  </div>
+                  <?php
+                  formGenerator($registrasiForm);
+                  ?>
                   <div class="text-center">
                     <button type="submit" class="btn btn-template-outlined"><i class="fa fa-user-md"></i> Register</button>
                   </div>
@@ -78,21 +105,7 @@ include "template/head.php";
                 <p><?php echo $pesan; ?></p>
                 <form action="login.php" method="post">
                   <?php
-                  $login = array(
-						array(
-							"name"	=>	"username",
-							"label"	=>	"Username",
-							"type"	=>	"input",
-							"inputType"	=>	"text"
-						),
-						array(
-							"name"	=>	"password",
-							"label"	=>	"Password",
-							"type"	=>	"input",
-							"inputType"	=>	"password"
-						)
-                  );
-                  formGenerator($login);
+                  formGenerator($loginForm);
                   ?>
                   <div class="text-center">
                     <button type="submit" class="btn btn-template-outlined"><i class="fa fa-sign-in"></i> Log in</button>

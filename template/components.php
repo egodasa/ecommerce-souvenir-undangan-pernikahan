@@ -65,7 +65,7 @@ function formGenerator($fields){
 								echo '
 									<div class="form-group">
 					                    <label for="'.$l['name'].'">'.$l['label'].'</label>
-					                    <input id="'.$l['name'].'" name="'.$l['name'].'" type="'.$l['inputType'].'" class="form-control" value="'.$value.'" '.$disabled.' '.$readonly.'>
+					                    <input id="'.$l['name'].'" name="'.$l['name'].'" type="'.$l['inputType'].'" class="form-control" value="'.$value.'" '.$disabled.' '.$readonly.' required />
 									</div>
 								';
 								break;
@@ -73,7 +73,7 @@ function formGenerator($fields){
 								echo '
 									<div class="form-group">
 					                    <label for="'.$l['name'].'">'.$l['label'].'</label>
-					                    <textarea id="'.$l['name'].'" name="'.$l['name'].'" class="form-control" value="'.$value.'" '.$disabled.' '.$readonly.'>'.$value.'</textarea>
+					                    <textarea id="'.$l['name'].'" name="'.$l['name'].'" class="form-control" value="'.$value.'" '.$disabled.' '.$readonly.'  required >'.$value.'</textarea>
 									</div>
 								';
 								break;
@@ -81,7 +81,7 @@ function formGenerator($fields){
 								echo '
 									<div class="form-group">
 										<label for="'.$l['name'].'">'.$l['label'].'</label>
-										<select id="'.$l['name'].'" name="'.$l['name'].'" class="form-control" value="'.$value.'" '.$disabled.' '.$readonly.'>';
+										<select id="'.$l['name'].'" name="'.$l['name'].'" class="form-control" value="'.$value.'" '.$disabled.' '.$readonly.'  required >';
 									foreach($l['options'] as $d){
 										echo '<option value="'.$d[$l['optionValue']].'" '.$disabled.' '.$readonly.'>'.$d[$l['optionLabel']].'</option>';
 									}	
@@ -99,7 +99,7 @@ function formGenerator($fields){
 					echo '
 						<div class="form-group">
 		                    <label for="'.$f['name'].'">'.$f['label'].'</label>
-		                    <input id="'.$f['name'].'" name="'.$f['name'].'" type="'.$f['inputType'].'" class="form-control" value="'.$value.'" '.$disabled.' '.$readonly.'>
+		                    <input id="'.$f['name'].'" name="'.$f['name'].'" type="'.$f['inputType'].'" class="form-control" value="'.$value.'" '.$disabled.' '.$readonly.'  required >
 						</div>
 					';
 					break;
@@ -115,7 +115,7 @@ function formGenerator($fields){
 					echo '
 						<div class="form-group">
 							<label for="'.$f['name'].'">'.$f['label'].'</label>
-							<select id="'.$f['name'].'" name="'.$f['name'].'" class="form-control" value="'.$value.'" '.$disabled.' '.$readonly.'>';
+							<select id="'.$f['name'].'" name="'.$f['name'].'" class="form-control" value="'.$value.'" '.$disabled.' '.$readonly.'  required >';
 						foreach($f['options'] as $d){
 							if($d[$f['optionValue']] == $f['value']){
 								echo '<option value="'.$d[$f['optionValue']].'" '.$disabled.' '.$readonly.' selected>'.$d[$f['optionLabel']].'</option>';
