@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/vendor/autoload.php';
 include "db.php";
-$base_url= "http://localhost/rotan";
+$base_url= "http://localhost/asmidar";
 $db = new Sparrow();
 $db->show_sql = true;
 $db->setDb("mysqli://root:qwe123*iop@localhost/dbrotan");
