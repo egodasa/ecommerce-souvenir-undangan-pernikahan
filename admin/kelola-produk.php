@@ -2,13 +2,6 @@
 session_start();
 require "../koneksi.php";
 cekLogin('Admin');
-include "../template/components.php";
-include "../template/head.php";
-?>
-<body>
-<div id="all">
-<?php 
-include "../template/header.php";
 
 $produk = array(
 	array(
@@ -40,8 +33,9 @@ $produk = array(
 	)
 );
 ?>
-<div id="content">
-<div class="container">
+
+<?php include "../template/bagian-atas.php"; ?>	
+
 <div class="row bar mb-0">
 <div class="col-md-12">
 <h2>Input Produk</h2>
@@ -98,11 +92,4 @@ tableGenerator($tableConf, $dataTable, $pk, $url);
 </div>
 </div>
 
-<!-- FOOTER -->
-</div>
-<?php include "../template/footer.php"; ?>
-</div>
-<!-- Javascript files-->
-<?php include "../template/javascript.php"; ?>
-</body>
-</html>
+<?php include "../template/bagian-bawah.php"; ?>	

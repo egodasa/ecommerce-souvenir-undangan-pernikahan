@@ -5,13 +5,6 @@ cekLogin('Admin');
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	$db->from('tbl_kota')->insert($_POST)->execute();
 }
-include "../template/components.php";
-include "../template/head.php";
-?>
-<body>
-<div id="all">
-<?php 
-include "../template/header.php";
 
 $kota = array(
 	array(
@@ -35,8 +28,8 @@ $kota = array(
 	)
 );
 ?>
-<div id="content">
-<div class="container">
+<?php include "../template/bagian-atas.php"; ?>	
+
 <div class="row bar mb-0">
 <div class="col-md-12">
 <h2>Input Kota</h2>
@@ -74,11 +67,4 @@ tableGenerator($tableConf, $dataTable, $pk, $url);
 </div>
 </div>
 
-<!-- FOOTER -->
-</div>
-<?php include "../template/footer.php"; ?>
-</div>
-<!-- Javascript files-->
-<?php include "../template/javascript.php"; ?>
-</body>
-</html>
+<?php include "../template/bagian-bawah.php"; ?>	

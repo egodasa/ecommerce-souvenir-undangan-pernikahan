@@ -12,15 +12,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	$detail = $db->from('tbl_pembayaran')
 	->join('tbl_pemesanan',array('tbl_pembayaran.id_pemesanan'=>'tbl_pemesanan.id_pemesanan', 'tbl_pembayaran.id_pemesanan' => $_GET['id_pemesanan']))
 	->select()->one();
-include "../template/head.php";
 ?>
-<body>
-<div id="all">
-<?php 
-include "../template/header.php";
-?>
-<div id="content">
-<div class="container">
+
+<?php include "../template/bagian-atas.php"; ?>	
+
 <div class="row">
 <div class="col-md-8 mx-auto">
 <div class="heading text-center">
@@ -67,11 +62,4 @@ include "../template/header.php";
 }
 ?>
 
-<!-- FOOTER -->
-</div>
-<?php include "../template/footer.php"; ?>
-</div>
-<!-- Javascript files-->
-<?php include "../template/javascript.php"; ?>
-</body>
-</html>
+<?php include "../template/bagian-bawah.php"; ?>	

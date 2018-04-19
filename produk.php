@@ -5,16 +5,10 @@ cekLogin('all');
 $judul = "Detail Produk";
 $detail = $db->from('tbl_produk')->where('id_produk',$_GET['id_produk'])->select()->one();
 $foto = $db->from('tbl_foto_produk')->where('id_produk',$_GET['id_produk'])->select()->many();
-include "template/head.php";
 ?>
-<body>
-<div id="all">
-<?php
-include "template/header.php";
-include "template/components.php";
-?>
-<div id="content">
-<div class="container">
+
+<?php include "template/bagian-atas.php"; ?>
+
 <div class="row bar">
 	<div class="col-sm-12">
 		<div class="row">
@@ -57,12 +51,4 @@ include "template/components.php";
 </div>
 </div>
 
-
-<!-- FOOTER -->
-</div>
-<?php include "template/footer.php"; ?>
-</div>
-<!-- Javascript files-->
-<?php include "template/javascript.php"; ?>
-</body>
-</html>
+<?php include "template/bagian-bawah.php"; ?>

@@ -3,14 +3,6 @@ session_start();
 require "../koneksi.php";
 cekLogin('Admin');
 $judul = "Daftar Transaksi";
-include "../template/head.php";
-include "../template/components.php";
-?>
-<body>
-<div id="all">
-<?php
-include "../template/header.php";
-
 $tableConf = array(
 	array(
 		"name"		=>	"nama_pemesan",
@@ -45,11 +37,7 @@ if(isset($_GET['id_pemesanan'])){
 	    ->many();
 ?>
 
-<div id="content">
-<div class="container">
-	
-	
-	
+<?php include "../template/bagian-atas.php"; ?>	
 
 <!-- START OF CONTENT -->
 <div class="row bar mb-0">
@@ -203,11 +191,4 @@ if(count($dataTable) == 0){
 </div>
 <!-- END OF CONTENT -->
 
-<!-- FOOTER -->
-</div>
-<?php include "../template/footer.php"; ?>
-</div>
-<!-- Javascript files-->
-<?php include "../template/javascript.php"; ?>
-</body>
-</html>
+<?php include "../template/bagian-bawah.php"; ?>	

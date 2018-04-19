@@ -5,16 +5,10 @@ cekLogin('Pelanggan');
 $judul = "Pesan Produk";
 if($_SERVER['REQUEST_METHOD'] == 'POST' || !empty($_POST)) {
 $detail = $db->from('tbl_produk')->where('id_produk',$_POST['id_produk'])->select()->one();
-include "template/head.php";
 ?>
-<body>
-<div id="all">
-<?php
-include "template/header.php";
-include "template/components.php";
-?>
-<div id="content">
-<div class="container">
+
+<?php include "template/bagian-atas.php"; ?>
+
 <div class="row">
 <div class="col-md-8 mx-auto">
 <div class="heading text-center">
@@ -81,14 +75,7 @@ formGenerator($pembeli);
 </div>
 </div>
 
-<!-- FOOTER -->
-</div>
-<?php include "template/footer.php"; ?>
-</div>
-<!-- Javascript files-->
-<?php include "template/javascript.php"; ?>
-</body>
-</html>
+<?php include "template/bagian-bawah.php"; ?>
 <?php
 }else{
 	header('Location: index.php');

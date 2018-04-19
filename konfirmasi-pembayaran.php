@@ -20,17 +20,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	}
 	header('Location: daftar-transaksi.php');
 }else{
-include "template/head.php";
+	$detail = $db->from('tbl_pemesanan')->where('id_pemesanan',$_GET['id_pemesanan'])->select()->one();
 ?>
-<body>
-<div id="all">
-<?php
-$detail = $db->from('tbl_pemesanan')->where('id_pemesanan',$_GET['id_pemesanan'])->select()->one();
-include "template/header.php";
-include "template/components.php";
-?>
-<div id="content">
-<div class="container">
+
+<?php include "template/bagian-atas.php"; ?>
+
 <div class="row">
 <div class="col-md-8 mx-auto">
 <?php
@@ -96,10 +90,9 @@ formGenerator($konfirmasi);
 ?>
 <button class="btn btn-lg btn-success" type="submit">Konfirmasi Pembayaran</button>
 </form>
+
+
 </div>
 </div>
-</div>
-<?php
-include "template/footer.php";
-}
-?>
+
+<?php include "template/bagian-bawah.php"; ?>

@@ -2,19 +2,10 @@
 session_start();
 require "koneksi.php";
 $judul = 'Tentang Kami';
-include "template/head.php";
 ?>
-<body>
-<div id="all">
-<?php
-include "template/header.php";
-?>
-<div id="content">
-<div class="container">
-	
-	
-	
-
+		
+<?php include "template/bagian-atas.php"; ?>
+		
 <!-- START OF CONTENT -->
 <div class="box">
 	<div class="box-body">
@@ -24,11 +15,4 @@ include "template/header.php";
 </div>
 <!-- END OF CONTENT -->
 
-<!-- FOOTER -->
-</div>
-<?php include "template/footer.php"; ?>
-</div>
-<!-- Javascript files-->
-<?php include "template/javascript.php"; ?>
-</body>
-</html>
+<?php include "template/bagian-bawah.php"; ?>

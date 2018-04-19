@@ -1,11 +1,13 @@
 <?php
 session_start();
 require "koneksi.php";
-$judul = "Login/Registrasi";
+require "template/components.php";
+$judul = 'Login/Registrasi';
+
 if(isset($_SESSION['username'])){
-	header('Location: '.$base_url);
+	header('Location: /skripsi');
 }
-include "template/components.php";
+
 $pesan = '';
 $pesandaftar = '';
 if(isset($_GET['err'])){
@@ -25,6 +27,7 @@ if(isset($_GET['err'])){
 			break;
 	}	
 }
+
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	$data = $_POST;
 	$hasil = $db->from('tbl_user')->where(array('username' => $data['username'], 'password' => md5($data['password'])))->select()->one();
@@ -34,80 +37,113 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 		$_SESSION['username'] = $hasil['username'];
 		$_SESSION['tipe_user'] = $hasil['tipe_user'];
 		$_SESSION['id_user'] = $hasil['id_user'];
-	header('Location: '.$base_url);
+	header('Location: /skripsi');
 	}
 }
+?>
+
+<!-- BAGIAN ATAS -->
+<!DOCTYPE html>
+<html lang="en">
+<?php
 include "template/head.php";
 ?>
-  <body>
-    <div id="all">
+<body>
 <?php include "template/header.php"; ?>
-      <div id="content">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="box">
-                <h2 class="text-uppercase">Buat Akun</h2>
-                <p>Pembelian pada website ini hanya bisa dilakukan jika Anda sudah punya akun</p>
-                <hr>
-                <p><?php echo $pesandaftar; ?></p>
-                <form action="registrasi.php" method="post">
-                  <div class="form-group">
-                    <label for="username">Username</label>
-                    <input id="username" name="username" type="text" class="form-control">
-                  </div>
-                  <div class="form-group">
-                    <label for="email">Email</label>
-                    <input id="email" name="email" type="email" class="form-control">
-                  </div>
-                  <div class="form-group">
-                    <label for="password">Password</label>
-                    <input id="password" name="password" type="password" class="form-control">
-                  </div>
-                  <div class="text-center">
-                    <button type="submit" class="btn btn-template-outlined"><i class="fa fa-user-md"></i> Register</button>
-                  </div>
-                </form>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="box">
-                <h2 class="text-uppercase">Login</h2>
-                <p>Silahkan Login jika sudah punya akun</p>
-                <hr>
-                <p><?php echo $pesan; ?></p>
-                <form action="login.php" method="post">
-                  <?php
-                  $login = array(
+<!-- NAVIGATION -->
+<?php include "template/navbar.php"; ?>
+<!-- /NAVIGATION -->
+<!-- section -->
+<div class="section">
+	<!-- container -->
+	<div class="container">
+<!-- /BAGIAN ATAS -->
+
+	<!-- CONTENT -->
+	<div class="row">
+		<div class="col-lg-6">
+		  <div class="box">
+			<h2 class="text-uppercase">Buat Akun</h2>
+			<p>Pembelian pada website ini hanya bisa dilakukan jika Anda sudah punya akun</p>
+			<hr>
+			<p><?php
+			echo $pesandaftar;
+			$registrasiForm = array(
 						array(
 							"name"	=>	"username",
 							"label"	=>	"Username",
 							"type"	=>	"input",
-							"inputType"	=>	"text"
+							"inputType"	=>	"text",
+						),
+						array(
+							"name"	=>	"email",
+							"label"	=>	"Email",
+							"type"	=>	"input",
+							"inputType"	=>	"email",
 						),
 						array(
 							"name"	=>	"password",
 							"label"	=>	"Password",
 							"type"	=>	"input",
-							"inputType"	=>	"password"
+							"inputType"	=>	"password",
 						)
-                  );
-                  formGenerator($login);
-                  ?>
-                  <div class="text-center">
-                    <button type="submit" class="btn btn-template-outlined"><i class="fa fa-sign-in"></i> Log in</button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- FOOTER -->
-      <?php include "template/footer.php"; ?>
-    </div>
-    <!-- Javascript files-->
-    <?php include "template/javascript.php"; ?>
+					);
+			$loginForm = array(
+						array(
+							"name"	=>	"username",
+							"label"	=>	"Username",
+							"type"	=>	"input",
+							"inputType"	=>	"text",
+						),
+						array(
+							"name"	=>	"password",
+							"label"	=>	"Password",
+							"type"	=>	"input",
+							"inputType"	=>	"password",
+						)
+					);
+			?></p>
+			<form action="registrasi.php" method="post">
+			  <?php
+			  formGenerator($registrasiForm);
+			  ?>
+			  <div class="text-center">
+				<button type="submit" class="btn btn-template-outlined"><i class="fa fa-user-md"></i> Register</button>
+			  </div>
+			</form>
+		  </div>
+		</div>
+		<div class="col-lg-6">
+		  <div class="box">
+			<h2 class="text-uppercase">Login</h2>
+			<p>Silahkan Login jika sudah punya akun</p>
+			<hr>
+			<p><?php echo $pesan; ?></p>
+			<form action="login.php" method="post">
+			  <?php
+			  formGenerator($loginForm);
+			  ?>
+			  <div class="text-center">
+				<button type="submit" class="btn btn-template-outlined"><i class="fa fa-sign-in"></i> Log in</button>
+			  </div>
+			</form>
+		  </div>
+		</div>
+	</div>
+	<!-- EOF CONTENT -->
+
+<!-- BAGIAN BAWAH -->
+</div>
+<!-- /container -->
+</div>
+<!-- /section -->
+
+<!-- FOOTER -->
+<?php include "template/footer-bawah.php"; ?>
+<!-- /FOOTER -->
+
+<?php include "template/javascript.php"; ?>
 </body>
 </html>
-
+<!-- BAGIAN BAWAH -->
+        
