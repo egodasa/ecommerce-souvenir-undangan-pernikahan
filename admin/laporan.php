@@ -34,7 +34,8 @@ $tableConf = array(
 	)
 );
 if(!isset($_GET['awal'])){
-	$dataTable = $db->from('tbl_pemesanan')
+		$dataTable = $db->from('tbl_pemesanan')
+	->leftJoin('tbl_pembayaran', array('tbl_pemesanan.id_pemesanan' => 'tbl_pembayaran.id_pemesanan'))
 	->join('tbl_produk',array('tbl_pemesanan.id_produk' => 'tbl_produk.id_produk'))
 	->where('tbl_pembayaran.status_pembayaran', 'Diterima')
 	->many();
