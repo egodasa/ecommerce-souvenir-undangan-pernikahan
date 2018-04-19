@@ -2,12 +2,10 @@
 session_start();
 require "../koneksi.php";
 cekLogin('Admin');
+$judul = 'Daftar User';
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	$db->from('tbl_user')->insert($_POST)->execute();
 }
-
-include "../template/header.php";
-
 $user = array(
 	array(
 		"name"	=> "input_group",
@@ -57,7 +55,9 @@ $user = array(
 
 <div class="row bar mb-0">
 <div class="col-md-12">
-<h2>Input User</h2>
+<div class="section-title">
+	<h3 class="title">Input User</h3>
+</div>
 <form method="POST" action="">
 <?php
 formGenerator($user);
@@ -87,7 +87,11 @@ $url = array(
 	"edit"		=>	"edit-user"
 );
 $dataTable = $db->from($table)->many();
-echo "<hr/><h2>Daftar User</h2>";
+?>
+<div class="section-title">
+	<h3 class="title">Daftar User</h3>
+</div>
+<?php
 tableGenerator($tableConf, $dataTable, $pk, $url);
 ?>
 </div>

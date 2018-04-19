@@ -5,7 +5,7 @@ require "template/components.php";
 $judul = 'Login/Registrasi';
 
 if(isset($_SESSION['username'])){
-	header('Location: /skripsi');
+	header('Location: '.$base_url);
 }
 
 $pesan = '';
@@ -37,7 +37,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 		$_SESSION['username'] = $hasil['username'];
 		$_SESSION['tipe_user'] = $hasil['tipe_user'];
 		$_SESSION['id_user'] = $hasil['id_user'];
-	header('Location: /skripsi');
+	header('Location: '.$base_url);
 	}
 }
 ?>

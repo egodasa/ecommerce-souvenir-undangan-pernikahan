@@ -5,10 +5,10 @@
 <!-- /section -->
 
 <!-- FOOTER -->
-<?php include "template/footer-bawah.php"; ?>
+<?php include "footer-bawah.php"; ?>
 <!-- /FOOTER -->
 
-<?php include "template/javascript.php"; ?>
+<?php include "javascript.php"; ?>
 </body>
 </html>
 <!-- BAGIAN BAWAH -->

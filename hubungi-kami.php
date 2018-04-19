@@ -9,7 +9,9 @@ $judul = 'Hubungi Kami';
 <!-- START OF CONTENT -->
 <div class="box">
 	<div class="box-body">
-	<h2 class="text-center">Kontak</h2>
+	<div class="section-title">
+		<h3 class="title">Kontak Toko Asmidar</h3>
+	</div>
 	<h4 class="text-center">Nomor Rekening Asmidar: Bank Nagari Syariah 91000550250050</h4>
 	<div class="row">
 		<div class="col-sm-4">

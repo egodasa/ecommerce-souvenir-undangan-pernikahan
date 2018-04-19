@@ -1,27 +1,23 @@
-<!-- Top bar-->
-<div class="top-bar">
 <div class="container">
-  <div class="row d-flex align-items-center">
-	<div class="col-md-6 d-md-block d-none">
-	  <p>Menjual Souvenir dan Undangan Pernikahan</p>
+<!--
+	<div class="col-md-6 offer animated fadeInDown" data-animate="fadeInDown" style="opacity: 0;">
+		<a href="#" class="btn btn-success btn-sm" data-animate-hover="shake">Offer of the day</a>  <a href="#">Get flat 35% off on orders over $50!</a>
 	</div>
-	<div class="col-md-6">
-	  <div class="d-flex justify-content-md-end justify-content-between">
-		  <?php
-		  if(!isset($_SESSION['username'])){
-		  ?>
-		  <div class="login"><a href="<?php echo $base_url."/login.php"; ?>" class="signup-btn"><i class="fa fa-user"></i><span class="d-none d-md-inline-block">Login/Registrasi</span></a></div>
-		  <?php
-			}else{
-		  ?>
-		  <div class="login"><a href="#" class="signup-btn"><i class="fa fa-user"></i><span class="d-none d-md-inline-block"><?php echo "Hello ,".$_SESSION['username']; ?></span></a></div>
-		  <?php
+-->
+	<div class="col-md-12 animated fadeInDown" data-animate="fadeInDown" style="opacity: 0;">
+		<ul class="menu">
+			<?php
+				if(isset($_SESSION['username'])){
+					echo "<li><a href='#'>Hai, ".$_SESSION['username']."</a></li>";
+				}else{
+			?>
+			<li><a href="<?php echo $base_url; ?>/login.php">Login</a>
+			</li>
+			<li><a href="<?php echo $base_url; ?>/registrasi.php">Register</a>
+			</li>
+			<?php
 			}
-		  ?>
-		
-	  </div>
+			?>
+		</ul>
 	</div>
-  </div>
 </div>
-</div>
-<!-- Top bar end-->

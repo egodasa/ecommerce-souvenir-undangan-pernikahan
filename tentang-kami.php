@@ -9,7 +9,9 @@ $judul = 'Tentang Kami';
 <!-- START OF CONTENT -->
 <div class="box">
 	<div class="box-body">
-		<h2>Tentang Kami</h2>
+		<div class="section-title">
+			<h3 class="title">Tentang Toko Asmidar</h3>
+		</div>
 	ATestsdfsndfndsnfsfn
 	</div>
 </div>

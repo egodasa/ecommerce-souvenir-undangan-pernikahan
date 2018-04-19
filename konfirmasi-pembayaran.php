@@ -25,8 +25,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
 <?php include "template/bagian-atas.php"; ?>
 
-<div class="row">
-<div class="col-md-8 mx-auto">
+<div class="box">
+<div class="box-body">
 <?php
 $msg->display();
 ?>
@@ -95,4 +95,5 @@ formGenerator($konfirmasi);
 </div>
 </div>
 
-<?php include "template/bagian-bawah.php"; ?>
+<?php include "template/bagian-bawah.php";
+}?>

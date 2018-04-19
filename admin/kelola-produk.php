@@ -2,7 +2,7 @@
 session_start();
 require "../koneksi.php";
 cekLogin('Admin');
-
+$judul = 'Daftar Produk';
 $produk = array(
 	array(
 		"name"	=>	"nm_produk",
@@ -10,21 +10,21 @@ $produk = array(
 		"type"	=>	"input",
 		"inputType"	=>	"text"
 	),
-	array(
-		"name"	=>	"jenis_produk",
-		"label"	=>	"Jenis Produk",
-		"type"	=>	"select",
-		"options"	=>	array(
-			array(
-				"jenis_produk"	=> "Souvenir"
-			),
-			array(
-				"jenis_produk"	=> "Undangan"
-			)
-		),
-		"optionLabel"	=> "jenis_produk",
-		"optionValue"	=> "jenis_produk"
-	),
+	//~ array(
+		//~ "name"	=>	"jenis_produk",
+		//~ "label"	=>	"Jenis Produk",
+		//~ "type"	=>	"select",
+		//~ "options"	=>	array(
+			//~ array(
+				//~ "jenis_produk"	=> "Souvenir"
+			//~ ),
+			//~ array(
+				//~ "jenis_produk"	=> "Undangan"
+			//~ )
+		//~ ),
+		//~ "optionLabel"	=> "jenis_produk",
+		//~ "optionValue"	=> "jenis_produk"
+	//~ ),
 	array(
 		"name"	=>	"harga",
 		"label"	=>	"Harga Produk",
@@ -38,7 +38,9 @@ $produk = array(
 
 <div class="row bar mb-0">
 <div class="col-md-12">
-<h2>Input Produk</h2>
+<div class="section-title">
+	<h3 class="title">Input Produk</h3>
+</div>
 <form enctype="multipart/form-data" method="POST" action="tambah-produk.php">
 <?php 
 formGenerator($produk);
@@ -70,10 +72,6 @@ $tableConf = array(
 		"label"	=>	"Nama Produk"
 	),
 	array(
-		"name"		=>	"jenis_produk",
-		"label"	=>	"Jenis Produk"
-	),
-	array(
 		"name"		=>	"harga",
 		"label"	=>	"Harga"
 	)
@@ -83,7 +81,11 @@ $url = array(
 	"edit"		=>	"edit-produk"
 );
 $dataTable = $db->from($table)->many();
-echo "<hr/><h2>Daftar Produk</h2>";
+?>
+<div class="section-title">
+	<h3 class="title">Daftar Produk</h3>
+</div>
+<?php
 tableGenerator($tableConf, $dataTable, $pk, $url);
 ?>
 </div>

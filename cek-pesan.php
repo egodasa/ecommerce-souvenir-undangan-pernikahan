@@ -13,10 +13,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
 <?php include "template/bagian-atas.php"; ?>
 
-<div class="row">
-<div class="col-md-8 mx-auto">
-<div class="heading text-center">
-  <h2>Produk Yang Dipesan</h2>
+<div class="box">
+<div class="box-body">
+<div class="section-title">
+	<h3 class="title">Produk Yang dipesan</h3>
 </div>
 <div class="products-big">
 <div class="row products">
@@ -25,7 +25,7 @@ foreach($foto as $f){
 ?>
 	<div class="col-md-4 col-xs-12">
 	<div class="product">
-	  <div class="image"><img src="<?php echo $base_url; ?>/produk/<?php echo $f['foto_produk']; ?>" alt="" class="img-fluid image1"></div>
+	  <div class="image"><img src="<?php echo $base_url; ?>/produk/<?php echo $f['foto_produk']; ?>" width="300" height="300" alt="" class="img-fluid image1"></div>
 	</div>
   </div>
 <?php
@@ -33,8 +33,8 @@ foreach($foto as $f){
 ?>
 </div>
 </div>
-<div class="heading text-center">
-  <h2>Detail Informasi Pembeli</h2>
+<div class="section-title">
+	<h3 class="title">Detail Informasi Pembeli</h3>
 </div>
 <p>*Silahkan cek semua informasi dibawah ini sebelum melanjutkan proses pemesanan...</p>
 <form method="POST" action="simpan-pesan.php">
@@ -132,10 +132,15 @@ $pembeli = array(
 );
 formGenerator($pembeli);
 ?>
+<a href="<?php echo $base_url; ?>" class="btn btn-lg btn-info pull-left"><< Kembali ke beranda</a>
 <button type="submit" class="btn btn-lg btn-info pull-right">Pesan >></button>
 </form>
 </div>
 </div>
 </div>
 
-<?php include "template/bagian-bawah.php"; ?>
+<?php include "template/bagian-bawah.php";
+}else{
+	header('Location: '.$base_url);
+}
+?>

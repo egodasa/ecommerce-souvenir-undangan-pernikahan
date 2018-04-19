@@ -9,7 +9,9 @@ $judul = 'Cara Pesan';
 <!-- START OF CONTENT -->
 	<div class="box">
 		<div class="box-body">
-		<h2>Cara Pemesanan</h2>
+		<div class="section-title">
+			<h3 class="title">Cara Pemesanan di Toko Asmidar</h3>
+		</div>
 		<ol>
 			<li>Pembeli yang ingin membeli produk melalui web bisa langsung melakukan registrasi</li>
 		    <li>Setelah registrasi pembeli bisa memilih produk yang telah disajikan, dengan mengklik pesan pada produk</li>

@@ -6,7 +6,8 @@ $judul = "Verifikasi Pembayaran";
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	$data = $_POST;
 	$db->from('tbl_pembayaran')->where('id_pemesanan',$_GET['id_pemesanan'])->update($data)->execute();
-	$msg->success('Verifikasi pembayaran berhasil dilakukan');
+	if($_POST['status_pembayaran'] == 'Diterima') $msg->success('Verifikasi pembayaran berhasil dilakukan');
+	else $msg->warning('Pembayaran telah ditolak');
 	header('Location: daftar-transaksi.php');
 }else{
 	$detail = $db->from('tbl_pembayaran')
@@ -16,13 +17,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
 <?php include "../template/bagian-atas.php"; ?>	
 
-<div class="row">
-<div class="col-md-8 mx-auto">
-<div class="heading text-center">
-<h2>Verifikasi Pembayaran</h2>
+<div class="box">
+<div class="box-body">
+<div class="section-title">
+	<h3 class="title">Verifikasi Pembayaran No #<?php echo $_GET['id_pemesanan']; ?></h3>
 </div>
 <form method="POST" action="">
-<h2>Verifikasi Pembayaran No #<?php echo $_GET['id_pemesanan']; ?></h2>
 <input type="hidden" value="<?php echo $_GET['id_pemesanan']; ?>" name="id_pemesanan" />
 
 <label for="nama_pembayar"><b>Nama Pembayar</b></label>
@@ -51,8 +51,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 </div>
 
 <label for="foto_bukti"><b>Foto Bukti</b></label>
-<p class="form-control"><img src="/skripsi/konfirmasi/<?php echo $detail['foto_bukti'];?>" width="100%" /></p>
-
+<p>
+<a href="<?php echo $base_url; ?>/konfirmasi/<?php echo $detail['foto_bukti'];?>">
+	<img src="<?php echo $base_url; ?>/konfirmasi/<?php echo $detail['foto_bukti'];?>" width="300" height="300" />
+</a>
+</p>
 <button type="submit" class="btn btn-lg btn-success" name="status_pembayaran"  value="Diterima">Terima Pembayaran</button>
 <button type="submit" class="btn btn-lg btn-danger" name="status_pembayaran"  value="Ditolak">Tolak Pembayaran</button>
 </form>

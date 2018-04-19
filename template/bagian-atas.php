@@ -15,3 +15,4 @@ include "head.php";
 	<!-- container -->
 	<div class="container">
 <!-- /BAGIAN ATAS -->
+<p><?php $msg->display(); ?></p>

@@ -2,6 +2,7 @@
 session_start();
 require "../koneksi.php";
 cekLogin('Admin');
+$judul = 'Daftar Kota';
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	$db->from('tbl_kota')->insert($_POST)->execute();
 }
@@ -32,12 +33,14 @@ $kota = array(
 
 <div class="row bar mb-0">
 <div class="col-md-12">
-<h2>Input Kota</h2>
+<div class="section-title">
+	<h3 class="title">Input Kota</h3>
+</div>
 <form method="POST" action="">
 <?php
 formGenerator($kota);
 ?>
-<button type="submit"class="btn btn-lg btn-success">Simpan</button>
+<button type="submit"class="btn btn-success">Simpan</button>
 </form>
 
 <?php
@@ -58,7 +61,11 @@ $url = array(
 	"edit"		=>	"edit-kota"
 );
 $dataTable = $db->from($table)->many();
-echo "<hr/><h2>Daftar Kota</h2>";
+?>
+<div class="section-title">
+	<h3 class="title">Daftar Kota</h3>
+</div>
+<?php
 tableGenerator($tableConf, $dataTable, $pk, $url);
 ?>
 </div>

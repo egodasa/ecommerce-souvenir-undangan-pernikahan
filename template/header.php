@@ -1,43 +1,48 @@
-<?php include "top-bar.php" ;?>
-<!-- Navbar Start-->
-<header class="nav-holder">
-        <div id="navbar" role="navigation" class="navbar navbar-expand-lg nav-light">
-          <div class="container"><a href="<?php echo $base_url;?>" class="navbar-brand home"><img src="<?php echo $base_url;?>/img/logo.png" alt="Universal logo" class="d-none d-md-inline-block"><img src="img/logo-small.png" alt="Universal logo" class="d-inline-block d-md-none"><span class="sr-only">Universal - go to homepage</span></a>
-            <button type="button" data-toggle="collapse" data-target="#navigation" class="navbar-toggler btn-template-outlined"><span class="sr-only">Toggle navigation</span><i class="fa fa-align-justify"></i></button>
-            <div id="navigation" class="navbar-collapse collapse">
-              <ul class="nav navbar-nav ml-auto">
-                <li class="nav-item"><a href="<?php echo $base_url; ?>/cara-pesan.php" class="dropdown-toggle">Cara Pesan <b class="caret"></b></a>
-                <li class="nav-item"><a href="<?php echo $base_url; ?>/hubungi-kami.php" class="dropdown-toggle">Hubungi Kami <b class="caret"></b></a>
-                <li class="nav-item"><a href="<?php echo $base_url; ?>/tentang-kami.php" class="dropdown-toggle">Tentang Kami <b class="caret"></b></a>
-                <?php
-					if(isset($_SESSION['username'])){
-                ?>
-                <li class="nav-item dropdown"><a href="javascript: void(0)" data-toggle="dropdown" class="dropdown-toggle" aria-expanded="false">Menu <b class="caret"></b></a>
-                  <ul class="dropdown-menu">
-					<?php
-					if($_SESSION['tipe_user'] == 'Admin'){
-					?>
-                    <li class="dropdown-item"><a href="<?php echo $base_url;?>/admin/daftar-transaksi.php" class="nav-link"><i class="fa fa-list"></i> Daftar Transaksi</a></li>
-                    <li class="dropdown-item"><a href="<?php echo $base_url;?>/admin/kelola-kota.php" class="nav-link"><i class="fa fa-list"></i> Daftar Kota</a></li>
-					<li class="dropdown-item"><a href="<?php echo $base_url;?>/admin/kelola-produk.php" class="nav-link"><i class="fa fa-list"></i> Daftar Produk</a></li>
-					<li class="dropdown-item"><a href="<?php echo $base_url;?>/admin/kelola-user.php" class="nav-link"><i class="fa fa-list"></i> Daftar User</a></li>
-					<li class="dropdown-item"><a href="<?php echo $base_url;?>/admin/laporan.php" class="nav-link"><i class="fa fa-list"></i> Laporan Transaksi</a></li>
-					<li class="dropdown-item"><a href="<?php echo $base_url;?>/logout.php" class="nav-link"><i class="fa fa-sign-out"></i> Logout</a></li>
-					<?php
-					}else{
-						?>
-					<li class="dropdown-item"><a href="<?php echo $base_url;?>/daftar-transaksi.php" class="nav-link"><i class="fa fa-list"></i> Daftar Transaksi</a></li>
-					<li class="dropdown-item"><a href="<?php echo $base_url;?>/logout.php" class="nav-link"><i class="fa fa-sign-out"></i> Logout</a></li>
-					<?php
-					}
-					?>
-                  </ul>
-                </li>
-                <?php
-				}
-                ?>
-                </li>
-          </div>
-        </div>
-      </header>
-<!-- Navbar End-->
+<!-- HEADER -->
+<header>
+	<!-- header -->
+	<div id="header">
+		<div class="container">
+			<div class="pull-left">
+				<!-- Logo -->
+				<div class="header-logo">
+					<a class="logo" href="#">
+						<img src="<?php echo $base_url; ?>/img/logo.png" alt="">
+					</a>
+				</div>
+				<!-- /Logo -->
+			</div>
+			<div class="pull-right">
+				<ul class="header-btns">
+					<!-- Account -->
+					<li class="header-account dropdown default-dropdown">
+						<div class="dropdown-toggle">
+							<?php
+							if(isset($_SESSION['username'])){
+								echo '<strong class="text-uppercase">'.$_SESSION['username'].' / </strong>';
+							}
+							?>
+							<?php
+							if(!isset($_SESSION['username'])){
+								echo '<a href="'.$base_url.'/login.php" class="text-uppercase">Login / Registrasi</a>';
+							}else{
+								echo '<a href="'.$base_url.'/logout.php" class="text-uppercase">Logout</a>';
+							}
+							?>
+						</div>
+					</li>
+					<!-- /Account -->
+
+					<!-- Mobile nav toggle-->
+					<li class="nav-toggle">
+						<button class="nav-toggle-btn main-btn icon-btn"><i class="fa fa-bars"></i></button>
+					</li>
+					<!-- / Mobile nav toggle -->
+				</ul>
+			</div>
+		</div>
+		<!-- header -->
+	</div>
+	<!-- container -->
+</header>
+<!-- /HEADER -->

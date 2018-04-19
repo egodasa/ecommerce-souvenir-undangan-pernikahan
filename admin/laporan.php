@@ -3,7 +3,6 @@ session_start();
 require "../koneksi.php";
 cekLogin('Admin');
 $judul = "Laporan Transaksi";
-include "../template/head.php";
 
 $awal = date('Y-m-d');
 $akhir = date('Y-m-d');;
@@ -41,19 +40,15 @@ if(!isset($_GET['awal'])){
 	->many();
 }else $dataTable = $db->sql('select * from tbl_pemesanan join tbl_produk on tbl_pemesanan.id_produk = tbl_produk.id_produk where tbl_pembayaran.status_pembayaran = "Diterima" and tgl_pesan between "'.$awal.'" and "'.$akhir.'"')->many();
 ?>
-<body>
-<div id="all">
-<?php 
-include "../template/header.php";
-?>
-<div id="content">
-<div class="container">
-	
+
+<?php include "../template/bagian-atas.php"; ?>	
 
 <!-- START OF CONTENT -->
 <div class="row bar mb-0">
 <div class="col-md-12">
-<h2>Laporan Transaksi</h2>
+<div class="section-title">
+	<h3 class="title">Laporan Transaksi</h3>
+</div>
 <form method="GET" action="">
 <div class="row">
 	<div class="col-sm-4">
@@ -123,11 +118,4 @@ if(count($dataTable) == 0){
 }
 ?>
 
-<!-- FOOTER -->
-</div>
-<?php include "../template/footer.php"; ?>
-</div>
-<!-- Javascript files-->
-<?php include "../template/javascript.php"; ?>
-</body>
-</html>
+<?php include "../template/bagian-bawah.php"; ?>	

@@ -5,6 +5,10 @@ cekLogin('Pelanggan');
 $judul = "Daftar Transaksi";
 $tableConf = array(
 	array(
+		"name"		=>	"id_pemesanan",
+		"caption"	=>	"ID Pemesanan"
+	),
+	array(
 		"name"		=>	"nama_pemesan",
 		"caption"	=>	"Nama Pemesan"
 	),
@@ -31,6 +35,7 @@ if(isset($_GET['id_pemesanan'])){
 	    ->where('tbl_pemesanan.id_pemesanan',$_GET['id_pemesanan'])
 	    ->where('id_user',$_SESSION['id_user'])
 	    ->one();
+	$foto = $db->from('tbl_foto_produk')->where('id_produk',$detail['id_produk'])->select()->many();
 }else $dataTable = $db->from('tbl_pemesanan')
 		->distinct()
 	    ->leftJoin('tbl_pembayaran', array('tbl_pemesanan.id_pemesanan' => 'tbl_pembayaran.id_pemesanan'))
@@ -43,13 +48,32 @@ if(isset($_GET['id_pemesanan'])){
 	
 
 <!-- START OF CONTENT -->
-<div class="row bar mb-0">
-<div class="col-md-12">
+<div class="box">
+<div class="box-body">
 <?php $msg->display(); ?>
 <?php
 if(isset($_GET['id_pemesanan'])){
-	echo "<h2>Detail Transaksi</h2>";
 	//detail transaksi
+?>
+<div class="section-title">
+	<h3 class="title">Detail Produk</h3>
+</div>
+<div class="products-big">
+<div class="row products">
+<?php
+foreach($foto as $f){
+?>
+	<div class="col-md-4 col-xs-12">
+	<div class="product">
+	  <div class="image"><img src="<?php echo $base_url; ?>/produk/<?php echo $f['foto_produk']; ?>" width="300" height="300" alt="" class="img-fluid image1"></div>
+	</div>
+  </div>
+<?php
+}
+?>
+</div>
+</div>
+<?php
 	if(empty($detail)){
 		alert('danger','Transaksi tidak ditemukan');
 	}else{
@@ -125,7 +149,9 @@ if(isset($_GET['id_pemesanan'])){
 //detail transaksi
 }else{//daftar transaksi
 ?>
-<h2>Daftar Transaksi</h2>
+<div class="section-title">
+	<h3 class="title">Daftar Transaksi</h3>
+</div>
 <div class="table-responsive">
 <table class="table table-hover">
 <thead>

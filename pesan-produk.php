@@ -1,18 +1,37 @@
 <?php
 session_start();
 include "koneksi.php";
-cekLogin('Pelanggan');
+cekLogin('all');
 $judul = "Pesan Produk";
-if($_SERVER['REQUEST_METHOD'] == 'POST' || !empty($_POST)) {
-$detail = $db->from('tbl_produk')->where('id_produk',$_POST['id_produk'])->select()->one();
+if(isset($_GET['id_produk'])) {
+	$detail = $db->from('tbl_produk')->where('id_produk',$_GET['id_produk'])->select()->one();
+	$foto = $db->from('tbl_foto_produk')->where('id_produk',$_GET['id_produk'])->select()->many();
 ?>
 
 <?php include "template/bagian-atas.php"; ?>
 
-<div class="row">
-<div class="col-md-8 mx-auto">
-<div class="heading text-center">
-  <h2>Informasi Pembeli</h2>
+<div class="box">
+<div class="box-body">
+<div class="section-title">
+	<h3 class="title">Detail Produk</h3>
+</div>
+<div class="products-big">
+<div class="row products">
+<?php
+foreach($foto as $f){
+?>
+	<div class="col-md-4 col-xs-12">
+	<div class="product">
+	  <div class="image"><img src="<?php echo $base_url; ?>/produk/<?php echo $f['foto_produk']; ?>" width="300" height="300" alt="" class="img-fluid image1"></div>
+	</div>
+  </div>
+<?php
+}
+?>
+</div>
+</div>
+<div class="section-title">
+	<h3 class="title">Informasi Pembeli</h3>
 </div>
 <form method="POST" action="cek-pesan.php">
 <?php
@@ -63,7 +82,7 @@ $pembeli = array(
 				"type"	=>	"input",
 				"inputType"	=>	"hidden",
 				"col"	=>	"6",
-				"value"	=> $_POST['id_produk']
+				"value"	=> $_GET['id_produk']
 			)
 		)
 	)
@@ -78,6 +97,6 @@ formGenerator($pembeli);
 <?php include "template/bagian-bawah.php"; ?>
 <?php
 }else{
-	header('Location: index.php');
+	header('Location: '.$base_url);
 }
 ?>
