@@ -14,7 +14,7 @@
 		  <?php
 			}else{
 		  ?>
-		  <div class="login"><a href="#" class="signup-btn"><i class="fa fa-user"></i><span class="d-none d-md-inline-block"><?php echo "Hello ,".$_SESSION['username']; ?></span></a></div>
+		  <div class="login"><a href="#" class="signup-btn"><i class="fa fa-user"></i><span class="d-none d-md-inline-block"><?php echo "Hello ,".$_SESSION['username']." - ".$_SESSION['id_user']; ?></span></a></div>
 		  <?php
 			}
 		  ?>

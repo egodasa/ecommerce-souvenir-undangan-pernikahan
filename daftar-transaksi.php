@@ -33,7 +33,7 @@ if(isset($_GET['id_pemesanan'])){
 	$detail = $db->from('tbl_pemesanan')
 	    ->leftJoin('tbl_pembayaran', array('tbl_pemesanan.id_pemesanan' => 'tbl_pembayaran.id_pemesanan'))
 	    ->join('tbl_produk', array('tbl_pemesanan.id_produk' => 'tbl_produk.id_produk'))
-	    ->select(array('tbl_pemesanan.*','tbl_pembayaran.status_pembayaran','tbl_produk.harga'))
+	    ->select(array('tbl_pemesanan.*','tbl_pembayaran.status_pembayaran','tbl_produk.*'))
 	    ->where('tbl_pemesanan.id_pemesanan',$_GET['id_pemesanan'])
 	    ->where('id_user',$_SESSION['id_user'])
 	    ->one();
@@ -145,8 +145,43 @@ foreach($foto as $f){
 				)
 			);
 		formGenerator($detailForm);
-		echo '<a class="btn btn-success" href="daftar-transaksi.php">Kembali >></a>';
+		if($detail['jenis_produk'] == 'Undangan'){
+		$dataUndangan = $db->from('tbl_detail_pesanan')->where('id_pemesanan',$_GET['id_pemesanan'])->select()->one();
+			?>
+<h2>Detail Undangan</h2>
+<label for="nama_mempelai"><b>Nama Mempelai</b></label>
+<p class="form-control"><?php echo $dataUndangan['nama_mempelai']; ?></p>
+
+<label for="nama_orangtua"><b>Nama Orang Tua</b></label>
+<p class="form-control"><?php echo $dataUndangan['nama_orangtua']; ?></p>
+
+<label for="tgl_akadnikah"><b>Tanggal Akad Nikah</b></label>
+<p class="form-control"><?php echo $dataUndangan['tgl_akadnikah']; ?></p>
+
+<label for="tgl_resepsi"><b>Tanggal Resepsi</b></label>
+<p class="form-control"><?php echo $dataUndangan['tgl_resepsi']; ?></p>
+
+<label for="waktu_akadnikah"><b>Jam Akad Nikah</b></label>
+<p class="form-control"><?php echo $dataUndangan['waktu_akadnikah']; ?></p>
+
+<label for="waktu_resepsi"><b>Jam Resepsi</b></label>
+<p class="form-control"><?php echo $dataUndangan['waktu_resepsi']; ?></p>
+
+<label for="alamat_akadnikah"><b>Alamat Akad Nikah</b></label>
+<p class="form-control"><?php echo $dataUndangan['alamat_akadnikah']; ?></p>
+
+<label for="alamat_resepsi"><b>Alamat Resepsi</b></label>
+<p class="form-control"><?php echo $dataUndangan['alamat_resepsi']; ?></p>
+
+<label for="anggota_keluarga"><b>Anggota Keluarga Yang Mengundang</b></label>
+<p class="form-control"><?php echo $dataUndangan['anggota_keluarga']; ?></p>
+
+<label for="foto_lokasi"><b>Foto Denah Lokasi</b></label>
+<p class="form-control"><?php echo "<img src='".$base_url."/lokasi/".$dataUndangan['foto_lokasi']."' width='300' height='300'/>" ?></p>
+		<?php
 	}
+	echo '<a class="btn btn-success" href="daftar-transaksi.php">Kembali >></a>';
+}
 }else{
 ?>
 <h2>Daftar Transaksi</h2>

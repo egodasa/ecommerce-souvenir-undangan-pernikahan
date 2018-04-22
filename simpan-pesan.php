@@ -9,7 +9,7 @@ $id_pemesanan = $now->format("mdYHisu");
 	"nama_pemesan"		=> $data['nama_pemesan'],
 	"alamat_pemesan"	=> $data['alamat_pemesan'],
 	"no_telp"			=> $data['no_telp'],
-	"id_user"			=> $data['id_user'],
+	"id_user"			=> $_SESSION['id_user'],
 	"total_harga"		=> $data['total_harga'],
 	"jumlah_pesan"		=> $data['jumlah_pesan'],
 	"id_produk"			=> $data['id_produk']
@@ -27,7 +27,7 @@ $id_pemesanan = $now->format("mdYHisu");
 			"alamat_resepsi"	=> $data['alamat_resepsi'],
 			"anggota_keluarga"	=> $data['anggota_keluarga'],
 			"foto_lokasi"		=> $data['foto_lokasi'],
-			"id_pemesanan"		=> $db->insert_id
+			"id_pemesanan"		=> $id_pemesanan
 		);
 		$db->from('tbl_detail_pesanan')->insert($detail)->execute();
 	}

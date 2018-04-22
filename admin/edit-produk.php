@@ -1,6 +1,7 @@
 <?php
 session_start();
 require "../koneksi.php";
+$judul = "Edit Produk";
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	$d = $_POST;
 	$db->from('tbl_produk')->where('id_produk', $_GET['id_produk'])->update($d)->execute();
