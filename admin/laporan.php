@@ -6,7 +6,7 @@ cekLogin('Admin');
 include "../template/head.php";
 
 $awal = date('Y-m-d');
-$akhir = date('Y-m-d');;
+$akhir = date('Y-m-d');
 
 if(isset($_GET['awal'])) $awal = $_GET['awal'];
 if(isset($_GET['akhir'])) $akhir = $_GET['akhir'];
@@ -34,12 +34,11 @@ $tableConf = array(
 	)
 );
 if(!isset($_GET['awal'])){
-		$dataTable = $db->from('tbl_pemesanan')
-	->leftJoin('tbl_pembayaran', array('tbl_pemesanan.id_pemesanan' => 'tbl_pembayaran.id_pemesanan'))
+	$dataTable = $db->from('tbl_pemesanan')
 	->join('tbl_produk',array('tbl_pemesanan.id_produk' => 'tbl_produk.id_produk'))
-	->where('tbl_pembayaran.status_pembayaran', 'Diterima')
 	->many();
-}else $dataTable = $db->sql('select * from tbl_pemesanan join tbl_produk on tbl_pemesanan.id_produk = tbl_produk.id_produk where tbl_pembayaran.status_pembayaran = "Diterima" and tgl_pesan between "'.$awal.'" and "'.$akhir.'"')->many();
+}else $dataTable = $db->sql('select * from tbl_pemesanan join tbl_produk on tbl_pemesanan.id_produk = tbl_produk.id_produk where tgl_pesan between "'.$awal.'" and "'.$akhir.'"')->many();
+
 ?>
 <body>
 <div id="all">
