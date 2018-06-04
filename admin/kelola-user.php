@@ -90,7 +90,7 @@ $tableConf = array(
 );
 $url = array(
 	"hapus"		=>	"hapus-user",
-	"edit"		=>	"edit-user"
+	"edit"		=>	null
 );
 $dataTable = $db->from($table)->many();
 echo "<hr/><h2>Daftar User</h2>";
