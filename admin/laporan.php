@@ -9,36 +9,97 @@ $akhir = date('Y-m-d');;
 
 if(isset($_GET['awal'])) $awal = $_GET['awal'];
 if(isset($_GET['akhir'])) $akhir = $_GET['akhir'];
-
-$tableConf = array(
-	array(
-		"name"		=>	"nama_pemesan",
-		"caption"	=>	"Nama Pemesan"
-	),
-	array(
-		"name"		=>	"tgl_pesan",
-		"caption"	=>	"Tanggal Pesan"
-	),
-	array(
-		"name"		=>	"nm_produk",
-		"caption"	=>	"Nama Produk"
-	),
-	array(
-		"name"		=>	"jumlah_pesan",
-		"caption"	=>	"Jumlah Pesan"
-	),
-	array(
-		"name"		=>	"total_harga",
-		"caption"	=>	"Total Harga"
-	)
-);
-if(!isset($_GET['awal'])){
+if(isset($_GET['laporan'])){
+    switch($_GET['laporan']){
+        case "harian" : 
+            $tableConf = array(
+                array(
+                    "name"		=>	"nama_pemesan",
+                    "caption"	=>	"Nama Pemesan"
+                ),
+                array(
+                    "name"		=>	"tgl_pesan",
+                    "caption"	=>	"Tanggal Pesan"
+                ),
+                array(
+                    "name"		=>	"nm_produk",
+                    "caption"	=>	"Nama Produk"
+                ),
+                array(
+                    "name"		=>	"jumlah_pesan",
+                    "caption"	=>	"Jumlah Pesan"
+                ),
+                array(
+                    "name"		=>	"total_harga",
+                    "caption"	=>	"Total Harga"
+                )
+            );
+            $judul = "Laporan Harian";
+            $dataTable = $db->sql('select * from tbl_pemesanan join tbl_produk on tbl_pemesanan.id_produk = tbl_produk.id_produk where day(tgl_pesan) = day(now())')->many();
+        break;
+        case "bulanan" : 
+            $tableConf = array(
+                array(
+                    "name"		=>	"hari",
+                    "caption"	=>	"Tanggal"
+                ),
+                array(
+                    "name"		=>	"total_harga",
+                    "caption"	=>	"Total Harga"
+                )
+            );
+            $judul = "Laporan Bulanan";
+            $dataTable = $db->sql('select day(tgl_pesan) as `hari`, sum(total_harga) as `total_harga` from tbl_pemesanan join tbl_produk on tbl_pemesanan.id_produk = tbl_produk.id_produk where month(tgl_pesan) = month(now()) and year(tgl_pesan) = year(now()) group by day(tgl_pesan)')->many();
+        break;
+        case "tahunan" : 
+            $tableConf = array(
+                array(
+                    "name"		=>	"bulan",
+                    "caption"	=>	"Bulan"
+                ),
+                array(
+                    "name"		=>	"total_harga",
+                    "caption"	=>	"Total Harga"
+                )
+            );
+            $judul = "Tahunan";
+            $dataTable = $db->sql('select month(tgl_pesan) as `bulan`, sum(total_harga) as `total_harga` from tbl_pemesanan join tbl_produk on tbl_pemesanan.id_produk = tbl_produk.id_produk where year(tgl_pesan) = year(now()) group by month(tgl_pesan)')->many();
+        break;
+    }
+}else{
+    $tableConf = array(
+        array(
+            "name"		=>	"nama_pemesan",
+            "caption"	=>	"Nama Pemesan"
+        ),
+        array(
+            "name"		=>	"tgl_pesan",
+            "caption"	=>	"Tanggal Pesan"
+        ),
+        array(
+            "name"		=>	"nm_produk",
+            "caption"	=>	"Nama Produk"
+        ),
+        array(
+            "name"		=>	"jumlah_pesan",
+            "caption"	=>	"Jumlah Pesan"
+        ),
+        array(
+            "name"		=>	"total_harga",
+            "caption"	=>	"Total Harga"
+        )
+    );
+    if(!isset($_GET['awal'])){
+    $judul = "Laporan Penjualan Keseluruhan";
 	$dataTable = $db->from('tbl_pemesanan')
-	->leftJoin('tbl_pembayaran', array('tbl_pemesanan.id_pemesanan' => 'tbl_pembayaran.id_pemesanan'))
 	->join('tbl_produk',array('tbl_pemesanan.id_produk' => 'tbl_produk.id_produk'))
-	->where('tbl_pembayaran.status_pembayaran', 'Diterima')
 	->many();
-}else $dataTable = $db->sql('select * from tbl_pemesanan join tbl_produk on tbl_pemesanan.id_produk = tbl_produk.id_produk where tbl_pembayaran.status_pembayaran = "Diterima" and tgl_pesan between "'.$awal.'" and "'.$akhir.'"')->many();
+    }else{
+        $judul = "Laporan Dari Tanggal $awal - $akhir";
+        $dataTable = $db->sql('select * from tbl_pemesanan join tbl_produk on tbl_pemesanan.id_produk = tbl_produk.id_produk where tgl_pesan between "'.$awal.'" and "'.$akhir.'"')->many();
+    }
+}
+
 ?>
 
 <?php include "../template/bagian-atas.php"; ?>	
@@ -49,7 +110,7 @@ if(!isset($_GET['awal'])){
 <div class="section-title">
 	<h3 class="title">Laporan Transaksi</h3>
 </div>
-<form method="GET" action="">
+<form method="GET" action="cetak-laporan.php">
 <div class="row">
 	<div class="col-sm-4">
 		<div class="form-group">
@@ -66,7 +127,13 @@ if(!isset($_GET['awal'])){
 </div>
 <div class="form-group">
 			<button tpe="submit" class="btn btn-sm btn-primary">Tampilkan</button>
-			<a target="_blank" class="btn btn-sm btn-success" href="<?php echo "cetak-laporan.php?".$_SERVER['QUERY_STRING']; ?>">Cetak Laporan</a>
+			<button type="submit" class="btn btn-sm btn-primary">Cetak Laporan Sesuai Tanggal</button>
+			<br/>
+			<br/>
+            <p><b>Pilih Laporan</b></p>
+            <a target="_blank" class="btn btn-sm btn-success" href="<?php echo "cetak-laporan.php?laporan=harian"; ?>">Cetak Laporan Harian</a>
+			<a target="_blank" class="btn btn-sm btn-success" href="<?php echo "cetak-laporan.php?laporan=bulanan"; ?>">Cetak Laporan Bulanan</a>
+			<a target="_blank" class="btn btn-sm btn-success" href="<?php echo "cetak-laporan.php?laporan=tahunan"; ?>">Cetak Laporan Tahunan</a>
 		</div>
 </form>
 <hr>

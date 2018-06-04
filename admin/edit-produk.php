@@ -10,13 +10,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 		header('Location: '.$base_url);
 	}
 	$detail = $db->from('tbl_produk')->where('id_produk',$_GET['id_produk'])->select()->one();
-	include "../template/components.php";
-	include "../template/head.php";
-?>
-<body>
-<div id="all">
-<?php 
-include "../template/header.php";
 
 $produk = array(
 	array(
@@ -51,10 +44,11 @@ $produk = array(
 	)
 );
 ?>
-<div id="content">
-<div class="container">
-<div class="row bar mb-0">
-<div class="col-md-12">
+
+<?php include "../template/bagian-atas.php"; ?>	
+
+<div class="box">
+<div class="box-body">
 <h2>Edit Informasi Produk</h2>
 <form method="POST" action="">
 <?php 
@@ -67,14 +61,9 @@ formGenerator($produk);
 </div>
 </div>
 
-<!-- FOOTER -->
-</div>
-<?php include "../template/footer.php"; ?>
-</div>
-<!-- Javascript files-->
-<?php include "../template/javascript.php"; ?>
-</body>
-</html>
+<?php include "../template/bagian-bawah.php"; ?>	
+
+
 <?php
 }
 ?>

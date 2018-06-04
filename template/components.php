@@ -25,10 +25,10 @@ function tableGenerator($tableConf, $dataTable, $pk, $url){
 					foreach($tableConf as $t){
 						echo "<td>".$r[$t['name']]."</td>";
 					}
-					echo 	"<td>
-								<a href='".$url['hapus'].".php?".$pk."=".$r[$pk]."'>Hapus</a>
-								<a href='".$url['edit'].".php?".$pk."=".$r[$pk]."'>Edit</a>
-							</td></tr>";
+                    echo "<td>";
+                    if($url['hapus'] != null) echo "<a href='".$url['hapus'].".php?".$pk."=".$r[$pk]."'>Hapus</a>";
+                    if($url['edit'] != null) echo "<a href='".$url['edit'].".php?".$pk."=".$r[$pk]."'>Edit</a>";
+					echo "</td></tr>";
 					$no++;
 				}
 			}
