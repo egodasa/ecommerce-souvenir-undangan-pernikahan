@@ -26,8 +26,8 @@ function tableGenerator($tableConf, $dataTable, $pk, $url){
 						echo "<td>".$r[$t['name']]."</td>";
 					}
                     echo "<td>";
-                    if($url['hapus'] != null) echo "<a href='".$url['hapus'].".php?".$pk."=".$r[$pk]."'>Hapus</a>";
-                    if($url['edit'] != null) echo "<a href='".$url['edit'].".php?".$pk."=".$r[$pk]."'>Edit</a>";
+                    if($url['hapus'] != null) echo "<a class='btn btn-danger' href='".$url['hapus'].".php?".$pk."=".$r[$pk]."'>Hapus</a> ";
+                    if($url['edit'] != null) echo "<a class='btn btn-info' href='".$url['edit'].".php?".$pk."=".$r[$pk]."'>Edit</a>";
 					echo "</td></tr>";
 					$no++;
 				}

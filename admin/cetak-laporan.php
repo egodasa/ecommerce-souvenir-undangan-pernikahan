@@ -5,10 +5,10 @@ cekLogin('Admin');
 require_once __DIR__ . '/../vendor/autoload.php';
 $mpdf = new \Mpdf\Mpdf(['tempDir' => __DIR__ . '/../tsmp']);
 $judul = null;
-$alamat = "Contoh Alamat";
+$head = "<h2>CV. PERMATA OFFSET</h2>";
+$alamat = "Jl. Raya Indarung No.04, Kel.Tanjung Sabar Padang";
 $awal = date('Y-m-d');
 $akhir = date('Y-m-d');
-
 if(isset($_GET['awal'])) $awal = $_GET['awal'];
 if(isset($_GET['akhir'])) $akhir = $_GET['akhir'];
 
@@ -37,7 +37,7 @@ if(isset($_GET['laporan'])){
                     "caption"	=>	"Total Pemasukan"
                 )
             );
-            $judul = "Laporan Harian";
+            $judul = "Laporan Penjualan Hari ".date("l, d F Y");
             $dataTable = $db->sql('select * from tbl_pemesanan join tbl_produk on tbl_pemesanan.id_produk = tbl_produk.id_produk where day(tgl_pesan) = day(now())')->many();
         break;
         case "bulanan" : 
@@ -51,7 +51,7 @@ if(isset($_GET['laporan'])){
                     "caption"	=>	"Total Pemasukan"
                 )
             );
-            $judul = "Laporan Bulanan";
+            $judul = "Laporan Penjualan Bulan ".date("F Y");
             $dataTable = $db->sql('select day(tgl_pesan) as `hari`, sum(total_harga) as `total_harga` from tbl_pemesanan join tbl_produk on tbl_pemesanan.id_produk = tbl_produk.id_produk where month(tgl_pesan) = month(now()) and year(tgl_pesan) = year(now()) group by day(tgl_pesan)')->many();
         break;
         case "tahunan" : 
@@ -65,7 +65,7 @@ if(isset($_GET['laporan'])){
                     "caption"	=>	"Total Pemasukan"
                 )
             );
-            $judul = "Tahunan";
+            $judul = "Laporan Penjualan Tahun ".date("Y");
             $dataTable = $db->sql('select month(tgl_pesan) as `bulan`, sum(total_harga) as `total_harga` from tbl_pemesanan join tbl_produk on tbl_pemesanan.id_produk = tbl_produk.id_produk where year(tgl_pesan) = year(now()) group by month(tgl_pesan)')->many();
         break;
     }
@@ -131,8 +131,9 @@ h1, h2, p{
     text-align: center;
 }
 </style>';
-$html .='<h2>'.$judul.'</h2>';
+$html .='<h2>'.$head.'</h2>';
 $html .='<p>'.$alamat.'</p>';
+$html .='<p>'.$judul.'</p>';
 $html .='<hr>';
 $html .= '<table class="table table-hover">
 <thead>
@@ -167,7 +168,7 @@ if(count($dataTable) == 0){
 	$html .= "
 	<tfoot>
 	<tr>
-	<td colspan=".(count($tableConf)+1).">Total</td>
+	<td colspan=".(count($tableConf)).">Total</td>
 	<td>Rp ".number_format($total,2,',','.')."</td>
 	</tr></tfoot>";
 }

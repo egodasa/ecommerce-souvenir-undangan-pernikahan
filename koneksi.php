@@ -8,10 +8,10 @@ $db->setDb("mysqli://root:123456@localhost/dbsouvenir");
 function cekLogin($x){
 	$username = $_SESSION['username'];
 	if(!isset($username)){
-		header('Location: '.base_url().'login.php');
+		header('Location: '.$_GLOBAL['base_url'].'login.php');
 	}else{
 		if($_SESSION['tipe_user'] != $x && $x != 'all'){
-			header('Location: '.base_url());
+			header('Location: '.$_GLOBAL['base_url']);
 		}
 	}
 }

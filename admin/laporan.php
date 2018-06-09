@@ -1,7 +1,7 @@
 <?php
 session_start();
 require "../koneksi.php";
-$judul = null;
+$judul = "Laporan Penjualan";
 cekLogin('Admin');
 include "../template/head.php";
 
@@ -131,9 +131,12 @@ include "../template/header.php";
 	</div>
 </div>
 <div class="form-group">
-			<button tpe="submit" class="btn btn-sm btn-primary">Tampilkan Laporan</button>
-			<a target="_blank" class="btn btn-sm btn-success" href="<?php echo "cetak-laporan.php?".$_SERVER['QUERY_STRING']; ?>">Cetak Laporan Sesuai Tanggal</a>
-			<a target="_blank" class="btn btn-sm btn-success" href="<?php echo "cetak-laporan.php?laporan=harian"; ?>">Cetak Laporan Harian</a>
+        <button type="submit" class="btn btn-sm btn-primary">Tampilkan Laporan</button>
+        <button type="submit" class="btn btn-sm btn-success">Cetak Laporan Sesuai Tanggal</button>
+			<br/>
+			<br/>
+            <p><b>Pilih Laporan</b></p>
+            <a target="_blank" class="btn btn-sm btn-success" href="<?php echo "cetak-laporan.php?laporan=harian"; ?>">Cetak Laporan Harian</a>
 			<a target="_blank" class="btn btn-sm btn-success" href="<?php echo "cetak-laporan.php?laporan=bulanan"; ?>">Cetak Laporan Bulanan</a>
 			<a target="_blank" class="btn btn-sm btn-success" href="<?php echo "cetak-laporan.php?laporan=tahunan"; ?>">Cetak Laporan Tahunan</a>
 		</div>
