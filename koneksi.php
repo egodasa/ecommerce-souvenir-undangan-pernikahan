@@ -2,6 +2,7 @@
 require_once __DIR__ . '/vendor/autoload.php';
 include "db.php";
 $_GLOBAL['base_url'] = "http://localhost/skripsi/";
+$base_url = $_GLOBAL['base_url'];
 $db = new Sparrow();
 $db->show_sql = true;
 $db->setDb("mysqli://root:123456@localhost/dbsouvenir");
