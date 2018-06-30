@@ -47,14 +47,21 @@ include "template/components.php";
 		  </div>
 	</div>
 	<div class="col-sm-12">
-		<form method="GET" action="pesan-produk.php">
-		<div class="form-group">
-			<label>Jumlah Pesan</label>
-			<input type="number" name="jumlah_pesan" required />
-			<input type="hidden" name="jenis" value="<?php echo $detail['jenis_produk']; ?>" />
-			<input type="hidden" name="id_produk" value="<?php echo $detail['id_produk']; ?>" />
-		</div>
-		<button type="submit" class="btn btn-lg btn-success">Lanjutkan Pemesanan >></button>
+        <?php if($_SESSION['tipe_user'] != "Admin"){
+            if($detail['stok'] == 0){
+            echo alert("Stok produk sedang kosong. Anda tidak dapat memesan produk ini.","warning");
+            else: ?>
+                <form method="GET" action="pesan-produk.php">
+                <div class="form-group">
+                    <label>Jumlah Pesan (Tersisa <?=$detail['stok'];?> pcs)</label>
+                    <input type="number" min="0" max="<?=$detail['stok']; ?>" name="jumlah_pesan" required />
+                    <input type="hidden" name="jenis" value="<?=$detail['jenis_produk']; ?>" />
+                    <input type="hidden" name="id_produk" value="<?=$detail['id_produk']; ?>" />
+                </div>
+                <button type="submit" class="btn btn-lg btn-success">Lanjutkan Pemesanan >></button>
+                </form>
+            <?php }
+            } ?>
 	</div>
 </div>
 </div>

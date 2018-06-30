@@ -45,6 +45,13 @@ $produk = array(
 		"value"	=> $detail['jenis_produk']
 	),
 	array(
+		"name"	=>	"stok",
+		"label"	=>	"Stok Produk",
+		"type"	=>	"input",
+		"inputType"	=>	"number",
+		"value"	=> $detail['stok']
+	),
+	array(
 		"name"	=>	"harga",
 		"label"	=>	"Harga Produk",
 		"type"	=>	"input",

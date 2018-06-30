@@ -6,6 +6,7 @@ $judul = 'Pesan Produk';
 if(!empty($_GET['id_produk']) && !empty($_GET['jenis'])) {
 
 $detail = $db->from('tbl_produk')->where('id_produk',$_GET['id_produk'])->select()->one();
+$kota = $db->from('tbl_kota')->select()->many();
 include "template/head.php";
 ?>
 <body>
@@ -32,6 +33,14 @@ $pembeli = array(
 		"label"	=>	"Nama Pemesan",
 		"type"	=>	"input",
 		"inputType"	=>	"text"
+	),
+	array(
+		"name"	=>	"id_kota",
+		"label"	=>	"Kota Tujuan",
+		"type"	=>	"select",
+		"options"	=>	$kota,
+		"optionLabel"	=>	"nm_kota",
+		"optionValue"	=>	"id_kota"
 	),
 	array(
 		"name"	=>	"alamat_pemesan",

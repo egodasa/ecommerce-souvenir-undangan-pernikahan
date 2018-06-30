@@ -4,6 +4,7 @@ require "../koneksi.php";
 	$data = array(
 		"nm_produk"		=>	$_POST['nm_produk'],
 		"jenis_produk"	=>	$_POST['jenis_produk'],
+		"stok"			=>	$_POST['stok'],
 		"harga"			=>	$_POST['harga']
 	);
 	$db->from('tbl_produk')->insert($data)->execute();

@@ -12,6 +12,7 @@ $id_pemesanan = $now->format("mdYHisu");
 	"id_user"			=> $_SESSION['id_user'],
 	"total_harga"		=> $data['total_harga'],
 	"jumlah_pesan"		=> $data['jumlah_pesan'],
+	"id_kota"			=> $data['id_kota'],
 	"id_produk"			=> $data['id_produk']
 	);
 	$db->from('tbl_pemesanan')->insert($pemesanan)->execute();

@@ -11,6 +11,7 @@ include "template/head.php";
 <?php
 include "template/header.php";
 include "template/components.php";
+$kota = $db->from('tbl_kota')->where("id_kota",$_POST['id_kota'])->select()->one();
 ?>
 <div id="content">
 <div class="container">
@@ -30,6 +31,11 @@ include "template/components.php";
 <p class="form-control"><?php echo $_POST['nama_pemesan']; ?></p>
 <br/>
 
+<label for="kota"><b>Kota Tujuan</b></label>
+<input type="hidden" name="id_kota" value="<?php echo $_POST['id_kota'];?>"/>
+<p class="form-control"><?php echo $kota['nm_kota']." (Biaya Pengiriman ".$kota['tarif'].")"; ?></p>
+<br/>
+
 <label for="alamat_pemesan"><b>Alamat Pemesan</b></label>
 <input type="hidden" name="alamat_pemesan" value="<?php echo $_POST['alamat_pemesan'];?>"/>
 <p class="form-control"><?php echo $_POST['alamat_pemesan']; ?></p>
@@ -41,8 +47,8 @@ include "template/components.php";
 <br/>
 
 <label for="total_harga"><b>Total Harga</b></label>
-<input type="hidden" name="total_harga" value="<?php echo $_POST['total_harga'];?>"/>
-<p class="form-control"><?php echo $_POST['total_harga']; ?></p>
+<input type="hidden" name="total_harga" value="<?php echo ($_POST['total_harga']+$kota['tarif']);?>"/>
+<p class="form-control"><?php echo ($_POST['total_harga']+$kota['tarif']); ?></p>
 <br/>
 
 <label for="jumlah_pesan"><b>Jumlah Pesan</b></label>
