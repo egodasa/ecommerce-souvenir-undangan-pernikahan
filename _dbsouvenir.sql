@@ -18,7 +18,7 @@ CREATE TABLE `tbl_detail_pesanan` (
   `anggota_keluarga` text NOT NULL,
   `foto_lokasi` text NOT NULL,
   `id_detail` int(11) NOT NULL AUTO_INCREMENT,
-  `id_pemesanan` int(11) NOT NULL,
+  `id_pemesanan` varchar(100) NOT NULL,
   PRIMARY KEY (`id_detail`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

@@ -1,8 +1,8 @@
 <?php
 session_start();
 require "../koneksi.php";
-$id_kota = $_GET['id_kota'];
-$db->from('tbl_kota')->where('id_kota', $id_kota)->delete()->execute();
-header('Location: kelola-kota.php');
+$id_user = $_GET['id_user'];
+$db->from('tbl_user')->where('id_user', $id_user)->delete()->execute();
+header('Location: kelola-user.php');
 ?>
 

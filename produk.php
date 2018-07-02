@@ -49,8 +49,9 @@ include "template/components.php";
 	<div class="col-sm-12">
         <?php if($_SESSION['tipe_user'] != "Admin"){
             if($detail['stok'] == 0){
-            echo alert("Stok produk sedang kosong. Anda tidak dapat memesan produk ini.","warning");
-            else: ?>
+                echo alert("Stok produk sedang kosong. Anda tidak dapat memesan produk ini.","warning");
+            }
+            else{?>
                 <form method="GET" action="pesan-produk.php">
                 <div class="form-group">
                     <label>Jumlah Pesan (Tersisa <?=$detail['stok'];?> pcs)</label>
@@ -60,8 +61,7 @@ include "template/components.php";
                 </div>
                 <button type="submit" class="btn btn-lg btn-success">Lanjutkan Pemesanan >></button>
                 </form>
-            <?php }
-            } ?>
+            <?php }} ?>
 	</div>
 </div>
 </div>
