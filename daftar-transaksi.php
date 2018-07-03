@@ -34,9 +34,9 @@ if(isset($_GET['id_pemesanan'])){
 	    ->leftJoin('tbl_pembayaran', array('tbl_pemesanan.id_pemesanan' => 'tbl_pembayaran.id_pemesanan'))
 	    ->join('tbl_produk', array('tbl_pemesanan.id_produk' => 'tbl_produk.id_produk'))
 	    ->join('tbl_kota', array('tbl_pemesanan.id_kota' => 'tbl_kota.id_kota'))
-	    ->select(array('tbl_pemesanan.*','tbl_pembayaran.status_pembayaran','tbl_produk.*','tbl_kota.*'))
-	    ->where('tbl_pemesanan.id_pemesanan',$_GET['id_pemesanan'])
+		->where('tbl_pemesanan.id_pemesanan',$_GET['id_pemesanan'])
 	    ->where('id_user',$_SESSION['id_user'])
+	    ->select(array('tbl_pemesanan.*','tbl_pembayaran.status_pembayaran','tbl_produk.*','tbl_kota.*'))
 	    ->one();
 }else $dataTable = $db->from('tbl_pemesanan')
 		->distinct()
@@ -100,7 +100,7 @@ foreach($foto as $f){
 							"type"	=>	"input",
 							"inputType"	=>	"text",
 							"col"	=> "12",
-							"value"	=>  $detail['nm_kota']." (Biaya pengiriman".$detail['tarif'].")",
+							"value"	=>  $detail['nm_kota']." (Biaya pengiriman ".$detail['tarif'].")",
 							"readonly"	=> true
 						),
 						array(
@@ -114,7 +114,7 @@ foreach($foto as $f){
 						),
 						array(
 							"name"	=>	"no_telp",
-							"label"	=>	"Nomor Telpon",
+							"label"	=>	"Nomor Telepon",
 							"type"	=>	"input",
 							"inputType"	=>	"text",
 							"col"	=> "6",

@@ -18,7 +18,16 @@ include "template/header.php";
 <div class="box">
 	<div class="box-body">
 		<h2>Cara Pesan</h2>
-	ATestsdfsndfndsnfsfn
+         CV.PERMATA OFFSET
+	Percetakan & Digital Printing
+	<ol>
+		<li>Lakukan registrasi setelah itu login dimenu sebelahnya</li>
+		<li>Pilih produk yang akan dipesan/klik produk yang ingin dipesan</li>
+		<li>Isi data produk dengan benar saat melakukan proses pemesanan</li>
+		<li>Cek data dengan teliti sebelum benar-benar melakukan pemesanan</li>
+		<li>Lakukan pembayaran dan kirimkan bukti transaksi pembayaran</li>
+		<li>Produk yang dipesan akan segera diproses</li>
+	</ol>
 	</div>
 </div>
 <!-- END OF CONTENT -->

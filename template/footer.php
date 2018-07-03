@@ -64,7 +64,7 @@
   <div class="container">
 	<div class="row">
 	  <div class="col-lg-4 text-center-md">
-		<p>© 2018. Your company / name goes here</p>
+		<p>© 2018. CV.PERMATA OFFSET / TOKO ONLINE SOUVENIR DAN KARTU UNDANGAN</p>
 	  </div>
 	  <div class="col-lg-8 text-right text-center-md">
 		<p>Template design by <a href="https://bootstrapious.com/free-templates">Bootstrapious Templates </a></p>
