@@ -10,7 +10,7 @@
 		  <?php
 		  if(!isset($_SESSION['username'])){
 		  ?>
-		  <div class="login"><a href="<?php echo $base_url."/login.php"; ?>" class="signup-btn"><i class="fa fa-user"></i><span class="d-none d-md-inline-block">Login/Registrasi</span></a></div>
+		  <div class="login"><a href="<?php echo $base_url."/login.php"; ?>" class="signup-btn"><i class="fa fa-user"></i><span class="d-none d-md-inline-block">Login</a></span><a href="<?php echo $base_url."/registrasi.php"; ?>" class="signup-btn"> Registrasi</a></div>
 		  <?php
 			}else{
 		  ?>
