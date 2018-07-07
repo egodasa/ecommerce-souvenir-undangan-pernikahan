@@ -6,7 +6,6 @@ $base_url = $_GLOBAL['base_url'];
 $db = new Sparrow();
 $db->show_sql = true;
 //database
-$db->setDb(getenv('DATABASE_URL'));
 $db->setDb(array(
     'type' => 'pgsql',
     'hostname' => 'https://ec2-184-73-174-171.compute-1.amazonaws.com',
