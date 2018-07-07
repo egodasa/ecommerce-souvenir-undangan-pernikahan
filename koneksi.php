@@ -5,7 +5,7 @@ $_GLOBAL['base_url'] = "http://localhost/skripsi/";
 $base_url = $_GLOBAL['base_url'];
 $db = new Sparrow();
 $db->show_sql = true;
-$db->setDb("mysqli://root:@localhost/dbsouvenir");
+$db->setDb("mysqli://root:123456@localhost/dbsouvenir");
 function cekLogin($x){
 	$username = $_SESSION['username'];
 	if(!isset($username)){
