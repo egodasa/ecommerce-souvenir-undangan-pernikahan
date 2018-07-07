@@ -8,10 +8,11 @@ $db->show_sql = true;
 //database
 $db->setDb(array(
     'type' => 'pgsql',
-    'hostname' => 'https://ec2-184-73-174-171.compute-1.amazonaws.com',
+    'hostname' => 'ec2-184-73-174-171.compute-1.amazonaws.com',
     'database' => 'd775vshpuv9cs0',
     'username' => 'ijmyzlwbtnvjlp',
-    'password' => '5a7b14c8dfcb7d5f9417ea0296d6c3d1a51ec5e26a087a08f0a43dbcebe757ce'
+    'password' => '5a7b14c8dfcb7d5f9417ea0296d6c3d1a51ec5e26a087a08f0a43dbcebe757ce',
+    'port' => '5432'
 ));
 function cekLogin($x){
 	$username = $_SESSION['username'];
