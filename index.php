@@ -7,7 +7,7 @@ else $page = $_GET['page'];
 $offset = ($page-1)*4;
 $totaldata = $db->from('tbl_produk')->count();
 $totalpage = ceil($totaldata/4);
-$daftarProduk = $db->sql('select a.id_produk,a.nm_produk,b.foto_produk from tbl_produk a join tbl_foto_produk b on a.id_produk = b.id_produk group by b.id_produk,a.id_produk')->limit(4)->offset($offset)->many();
+$daftarProduk = $db->sql('select a.id_produk,a.nm_produk,b.foto_produk,count(b.foto_produk) as banyak_foto  from tbl_produk a join tbl_foto_produk b on a.id_produk = b.id_produk group by b.id_produk,a.id_produk')->limit(4)->offset($offset)->many();
 include "template/head.php";
 ?>
 <body>
