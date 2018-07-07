@@ -5,6 +5,7 @@ $_GLOBAL['base_url'] = "http://ekomers.herokuapp.com";
 $base_url = $_GLOBAL['base_url'];
 $db = new Sparrow();
 $db->show_sql = true;
+//database
 $db->setDb(getenv('DATABASE_URL'));
 function cekLogin($x){
 	$username = $_SESSION['username'];
