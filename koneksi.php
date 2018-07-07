@@ -1,11 +1,11 @@
 <?php
 require_once __DIR__ . '/vendor/autoload.php';
 include "db.php";
-$_GLOBAL['base_url'] = "http://localhost/skripsi/";
+$_GLOBAL['base_url'] = "http://ekomers.herokuapp.com";
 $base_url = $_GLOBAL['base_url'];
 $db = new Sparrow();
 $db->show_sql = true;
-$db->setDb("mysqli://root:123456@localhost/dbsouvenir");
+$db->setDb(getenv('DATABASE_URL'));
 function cekLogin($x){
 	$username = $_SESSION['username'];
 	if(!isset($username)){
