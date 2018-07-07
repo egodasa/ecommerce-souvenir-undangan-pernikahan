@@ -7,7 +7,6 @@ else $page = $_GET['page'];
 $offset = ($page-1)*4;
 $totaldata = $db->from('tbl_produk')->count();
 $totalpage = ceil($totaldata/4);
-$db->sql("set sql_mode = 'STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION';")->execute();
 $daftarProduk = $db->from('tbl_produk')
 ->join('tbl_foto_produk',array('tbl_produk.id_produk' => 'tbl_foto_produk.id_produk'))->groupBy('tbl_foto_produk.id_produk')
 ->limit(4)->offset($offset)->many();
