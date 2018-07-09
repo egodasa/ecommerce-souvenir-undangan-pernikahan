@@ -44,7 +44,7 @@ include "template/head.php";
             <div class="col-lg-12">
               <div class="box">
                 <h2 class="text-uppercase">Login</h2>
-                <p>Silahkan Login jika sudah punya akun</p>
+                <p>Silahkan Login Jika Sudah Punya Akun</p>
                 <hr>
                 <p><?php echo $pesan; ?></p>
                 <form action="login.php" method="post">
@@ -67,4 +67,3 @@ include "template/head.php";
     <?php include "template/javascript.php"; ?>
 </body>
 </html>
-

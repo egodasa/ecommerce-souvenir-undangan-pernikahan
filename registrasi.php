@@ -52,7 +52,7 @@ include "template/head.php";
             <div class="col-lg-12">
               <div class="box">
                 <h2 class="text-uppercase">Buat Akun</h2>
-                <p>Pembelian pada website ini hanya bisa dilakukan jika Anda sudah punya akun</p>
+                <p>Pembelian Pada Website Ini Hanya Bisa Dilakukan Jika Anda Sudah Punya Akun</p>
                 <hr>
                 <p><?php
                 echo $pesandaftar;
@@ -97,4 +97,3 @@ include "template/head.php";
     <?php include "template/javascript.php"; ?>
 </body>
 </html>
-
