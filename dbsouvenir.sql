@@ -24,24 +24,6 @@ CREATE TABLE `tbl_foto_produk` (
   PRIMARY KEY (`id_foto_produk`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `tbl_foto_produk` (`id_foto_produk`, `id_produk`, `foto_produk`) VALUES
-(7,	19,	'undangan-nikah-kipas.jpg'),
-(8,	19,	'Souvenir Kipas Undangan (4).jpg'),
-(9,	19,	'Souvenir Kipas Undangan (3).jpg'),
-(10,	20,	'upk.jpeg'),
-(11,	20,	'baru.jpg'),
-(12,	20,	''),
-(13,	21,	'souvenir-gerabah-frame-matahari.JPG'),
-(14,	21,	''),
-(15,	21,	''),
-(16,	22,	'souvenir-tempat-pensil-sepatu-bola-milan.jpg'),
-(17,	22,	''),
-(18,	22,	''),
-(19,	23,	'souvenir-gerabah.jpg'),
-(20,	23,	'bri.jpeg'),
-(21,	23,	'')
-ON DUPLICATE KEY UPDATE `id_foto_produk` = VALUES(`id_foto_produk`), `id_produk` = VALUES(`id_produk`), `foto_produk` = VALUES(`foto_produk`);
-
 DROP TABLE IF EXISTS `tbl_kota`;
 CREATE TABLE `tbl_kota` (
   `id_kota` int(11) NOT NULL AUTO_INCREMENT,
@@ -69,10 +51,6 @@ CREATE TABLE `tbl_pembayaran` (
   PRIMARY KEY (`id_pembayaran`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `tbl_pembayaran` (`id_pembayaran`, `id_pemesanan`, `nama_pembayar`, `no_rek`, `nama_bank`, `tgl_pembayaran`, `total`, `foto_bukti`, `status_pembayaran`) VALUES
-(2,	'05182018121230103500',	'Rian',	'12323123341',	'BRI',	'2018-01-04',	900000,	'bri.jpeg',	'Diterima')
-ON DUPLICATE KEY UPDATE `id_pembayaran` = VALUES(`id_pembayaran`), `id_pemesanan` = VALUES(`id_pemesanan`), `nama_pembayar` = VALUES(`nama_pembayar`), `no_rek` = VALUES(`no_rek`), `nama_bank` = VALUES(`nama_bank`), `tgl_pembayaran` = VALUES(`tgl_pembayaran`), `total` = VALUES(`total`), `foto_bukti` = VALUES(`foto_bukti`), `status_pembayaran` = VALUES(`status_pembayaran`);
-
 DROP TABLE IF EXISTS `tbl_pemesanan`;
 CREATE TABLE `tbl_pemesanan` (
   `id_pemesanan` varchar(100) NOT NULL,
@@ -87,11 +65,6 @@ CREATE TABLE `tbl_pemesanan` (
   `id_kota` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_pemesanan`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-INSERT INTO `tbl_pemesanan` (`id_pemesanan`, `nama_pemesan`, `alamat_pemesan`, `no_telp`, `id_user`, `total_harga`, `jumlah_pesan`, `id_produk`, `tgl_pesan`, `id_kota`) VALUES
-('05182018121230103500',	'Rian',	'Jalan sungai kapuas no 5',	'081994088434',	15,	900000,	300,	23,	'2018-05-18 12:12:30',	NULL),
-('06302018135608669100',	'Mandan',	'Alamat',	'082131231221',	9,	6000,	2,	21,	'2018-06-30 13:56:08',	1)
-ON DUPLICATE KEY UPDATE `id_pemesanan` = VALUES(`id_pemesanan`), `nama_pemesan` = VALUES(`nama_pemesan`), `alamat_pemesan` = VALUES(`alamat_pemesan`), `no_telp` = VALUES(`no_telp`), `id_user` = VALUES(`id_user`), `total_harga` = VALUES(`total_harga`), `jumlah_pesan` = VALUES(`jumlah_pesan`), `id_produk` = VALUES(`id_produk`), `tgl_pesan` = VALUES(`tgl_pesan`), `id_kota` = VALUES(`id_kota`);
 
 DELIMITER ;;
 
@@ -109,13 +82,6 @@ CREATE TABLE `tbl_produk` (
   `stok` int(11) DEFAULT '10',
   PRIMARY KEY (`id_produk`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-INSERT INTO `tbl_produk` (`id_produk`, `nm_produk`, `jenis_produk`, `harga`, `stok`) VALUES
-(20,	'Undangan Kipas Kuning',	'Undangan',	1500,	0),
-(21,	'Souvenir gerabah',	'Souvenir',	3000,	8),
-(22,	'Souvenir Gerabah bola',	'Souvenir',	2500,	10),
-(23,	'Souvenir Gerabah Asbaks',	'Souvenir',	3200,	10)
-ON DUPLICATE KEY UPDATE `id_produk` = VALUES(`id_produk`), `nm_produk` = VALUES(`nm_produk`), `jenis_produk` = VALUES(`jenis_produk`), `harga` = VALUES(`harga`), `stok` = VALUES(`stok`);
 
 DROP TABLE IF EXISTS `tbl_user`;
 CREATE TABLE `tbl_user` (
