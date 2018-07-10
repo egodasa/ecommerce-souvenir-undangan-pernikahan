@@ -132,4 +132,7 @@ function formGenerator($fields){
 function alert($pesan, $jenis = 'success'){
 	return '<div role="alert" class="alert alert-'.$jenis.'">'.$pesan.'</div>';
 }
+function rupiah($x){
+        return "Rp ".number_format($x,2,',','.');
+}
 ?>

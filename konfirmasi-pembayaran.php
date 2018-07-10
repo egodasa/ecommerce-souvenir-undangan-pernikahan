@@ -1,6 +1,7 @@
 <?php
 session_start();
 require "koneksi.php";
+require "./template/components.php";
 cekLogin('Pelanggan');
 $judul = 'Konfirmasi Pembayaran';
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -35,7 +36,7 @@ $msg->display();
   <h2>Konfirmasi Pembayaran</h2>
 </div>
 <label for="tgl_pembayaran"><b>Total Yang harus dibayar</b></label>
-<p class="form-control"><?php echo $detail['total_harga']; ?></p>
+<p class="form-control"><?php echo rupiah($detail['total_harga']); ?></p>
 <br/>
 <input type="hidden" value="<?php echo $_GET['id_pemesanan']; ?>" name="id_pemesanan" />
 <?php
