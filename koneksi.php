@@ -17,5 +17,8 @@ function cekLogin($x){
 		}
 	}
 }
+function rupiah($x){
+        return "Rp ".number_format($x,2,',','.');
+}
 $msg = new \Plasticbrain\FlashMessages\FlashMessages();
 ?>

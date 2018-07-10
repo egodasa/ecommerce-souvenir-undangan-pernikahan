@@ -9,7 +9,6 @@ $id_pemesanan = $now->format("mdYHisu");
 	"nama_pemesan"		=> $data['nama_pemesan'],
 	"alamat_pemesan"	=> $data['alamat_pemesan'],
 	"no_telp"			=> $data['no_telp'],
-	"id_user"			=> $data['id_user'],
 	"total_harga"		=> $data['total_harga'],
 	"jumlah_pesan"		=> $data['jumlah_pesan'],
 	"id_produk"			=> $data['id_produk'],

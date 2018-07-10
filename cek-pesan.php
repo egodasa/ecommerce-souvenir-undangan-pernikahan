@@ -1,7 +1,6 @@
 <?php
 session_start();
 require 'koneksi.php';
-require './template/components.php';
 cekLogin('all');
 $judul = "Cek Pesan";
 $hrg_kota = $db->from('tbl_kota')->where('id_kota',$_POST['id_kota'])->one();
@@ -122,8 +121,10 @@ $pembeli = array(
 			array(
 				"name"	=>	"total_harga",
 				"label"	=>	null,
-				"type"	=>	"hidden",
-				"value"	=> ($_POST['jumlah_pesan'] * $hrg_produk['harga']) + $hrg_kota['tarif']
+				"type"	=>	"input",
+				"inputType"	=>	"hidden",
+				"value"	=> ($_POST['jumlah_pesan'] * $hrg_produk['harga']) + $hrg_kota['tarif'],
+                                "col"   => "1"
 			),
 			array(
 				"name"	=>	"id_produk",
