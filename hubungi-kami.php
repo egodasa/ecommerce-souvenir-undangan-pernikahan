@@ -21,7 +21,7 @@ include "template/header.php";
         <div class="row">
             <div class="col-sm-3">
                 <p class="text-center">
-                    <assets/img src="<?php echo $base_url; ?>/assets/img/wa.jpg" style="width:100%;" class="assets/img-thumbnail assets/img-responsive" alt= "Image"/>
+                    <img src="<?php echo $base_url; ?>/assets/img/wa.jpg" style="width:100%;" class="assets/img-thumbnail assets/img-responsive" alt= "Image"/>
                     <p class="text-center"><b>Whatsapp</b></p>
                     <p class="text-center"><b>0852 7452 6035</b></p>
                 </p>
@@ -29,21 +29,21 @@ include "template/header.php";
             </div>
             <div class="col-sm-3">
                 <p class="text-center">
-                    <assets/img src="<?php echo $base_url; ?>/assets/img/ig.jpg" style="width:100%;" class="assets/img-thumbnail assets/img-responsive" alt= "Image"/>
+                    <img src="<?php echo $base_url; ?>/assets/img/ig.jpg" style="width:100%;" class="assets/img-thumbnail assets/img-responsive" alt= "Image"/>
                 </p>
                 <p class="text-center"><b>Instagram</b></p>
                 <p class="text-center"><b>Permata Offset</b></p>
             </div>
             <div class="col-sm-3">
                 <p class="text-center">
-                    <assets/img src="<?php echo $base_url; ?>/assets/img/eml.jpg" style="width:100%;" class="assets/img-thumbnail assets/img-responsive" alt= "Image"/>
+                    <img src="<?php echo $base_url; ?>/assets/img/eml.jpg" style="width:100%;" class="assets/img-thumbnail assets/img-responsive" alt= "Image"/>
                 </p>
                 <p class="text-center"><b>Email</b></p>
                 <p class="text-center"><b>permataoffset123@gmail.com</b></p>
             </div>
 			<div class="col-sm-3">
                 <p class="text-center">
-                    <assets/img src="<?php echo $base_url; ?>/assets/img/hp.jpg" style="width:100%;" class="assets/img-thumbnail assets/img-responsive" alt= "Image"/>
+                    <img src="<?php echo $base_url; ?>/assets/img/hp.jpg" style="width:100%;" class="assets/img-thumbnail assets/img-responsive" alt= "Image"/>
                 </p>
                 <p class="text-center"><b>Phone</b></p>
                 <p class="text-center"><b>0822 8452 0014</b></p>

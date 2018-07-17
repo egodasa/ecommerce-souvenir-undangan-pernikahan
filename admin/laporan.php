@@ -132,7 +132,7 @@ include "../template/header.php";
 </div>
 <div class="form-group">
         <button type="submit" class="btn btn-sm btn-primary">Tampilkan Laporan</button>
-        <button type="submit" class="btn btn-sm btn-success">Cetak Laporan Sesuai Tanggal</button>
+        <a href="cetak-laporan.php?<?=$_SERVER['QUERY_STRING']?>" class="btn btn-sm btn-success">Cetak Laporan Sesuai Tanggal</a>
 			<br/>
 			<br/>
             <p><b>Pilih Laporan</b></p>
