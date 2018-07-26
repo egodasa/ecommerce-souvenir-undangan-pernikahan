@@ -192,7 +192,7 @@ if(count($dataTable) == 0){
 				if($r['status_pembayaran'] == null){
 					echo "<td><a class='btn btn-info btn-sm' href='konfirmasi-pembayaran.php?id_pemesanan=".$r['id_pemesanan']."'>Konfirmasi Pembayaran</a></td>";
 				}else if($r['status_pembayaran'] == 'Diproses') echo "<td><span class='badge badge-warning'>Menunggu Verifikasi</span></td>";
-				else if($r['status_pembayaran'] == 'Diterima') echo "";
+                                }else if($r['status_pembayaran'] == 'Diterima') echo "<td><a target='_blank' class='btn btn-success btn-sm' href='".$base_url."/admin/faktur.php?id_pemesanan=".$r['id_pemesanan']."'>Cetak Faktur</a></td>";
 				else if($r['status_pembayaran'] == 'Ditolak') echo "<td><a class='btn btn-info btn-sm' href='konfirmasi-pembayaran.php?id_pemesanan=".$r['id_pemesanan']."&ulang=ya'>Konfirmasi Ulang</a></td>";
 			}
 		}

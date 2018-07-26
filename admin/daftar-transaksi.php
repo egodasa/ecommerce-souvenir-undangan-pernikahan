@@ -188,8 +188,8 @@ if(count($dataTable) == 0){
 			else echo "<td>".$r[$t['name']]."</td>";
 			if($t['name'] == 'status_pembayaran'){
 				if($r['status_pembayaran'] == 'Diproses'){
-					echo "<td><a class='btn btn-info btn-sm' href='".$base_url."/admin/verifikasi-pembayaran.php?id_pemesanan=".$r['id_pemesanan']."'>Verifikasi Pembayaran</span></td>";
-				}else if($r['status_pembayaran'] == 'Diterima') echo "<td><span class='badge badge-info'>Memproses Pesanan</span></td>";
+					echo "<td><a class='btn btn-info btn-sm' href='".$base_url."/admin/verifikasi-pembayaran.php?id_pemesanan=".$r['id_pemesanan']."'>Verifikasi Pembayaran</td>";
+				}else if($r['status_pembayaran'] == 'Diterima') echo "<td><a target='_blank' class='btn btn-success btn-sm' href='".$base_url."/admin/faktur.php?id_pemesanan=".$r['id_pemesanan']."'>Cetak Faktur</a></td>";
 				else echo "<td><span class='badge badge-warning'>Menunggu Pembayaran</span></td>";
 				}
 		}
