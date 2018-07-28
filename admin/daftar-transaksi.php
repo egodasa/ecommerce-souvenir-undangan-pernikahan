@@ -38,13 +38,6 @@ if(isset($_GET['id_pemesanan'])){
 	    ->where('tbl_pemesanan.id_pemesanan',$_GET['id_pemesanan'])
         ->select(array('tbl_pemesanan.*','tbl_pembayaran.status_pembayaran','tbl_produk.*','tbl_kota.*'))
 	    ->one();
-	echo $db->from('tbl_pemesanan')
-	    ->leftJoin('tbl_pembayaran', array('tbl_pemesanan.id_pemesanan' => 'tbl_pembayaran.id_pemesanan'))
-	    ->join('tbl_produk', array('tbl_pemesanan.id_produk' => 'tbl_produk.id_produk'))
-        ->join('tbl_kota', array('tbl_pemesanan.id_kota' => 'tbl_kota.id_kota'))
-	    ->select(array('tbl_pemesanan.*','tbl_pembayaran.status_pembayaran','tbl_produk.*'))
-	    ->where('tbl_pemesanan.id_pemesanan',$_GET['id_pemesanan'])
-        ->select(array('tbl_pemesanan.*','tbl_pembayaran.status_pembayaran','tbl_produk.*','tbl_kota.*'))->sql();
 }else $dataTable = $db->from('tbl_pemesanan')
 		->distinct()
 	    ->leftJoin('tbl_pembayaran', array('tbl_pemesanan.id_pemesanan' => 'tbl_pembayaran.id_pemesanan'))
@@ -64,7 +57,6 @@ if(isset($_GET['id_pemesanan'])){
 <?php
 if(isset($_GET['id_pemesanan'])){
 $foto = $db->from('tbl_foto_produk')->where('id_produk',$detail['id_produk'])->select()->many();
-var_dump($detail);
 ?>
 <h2>Produk Yang Dipesan</h2>
 <div class="products-big">

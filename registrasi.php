@@ -12,17 +12,33 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
   $data = array( 
     "username"  => $_POST['username'], 
     "password"  => md5($_POST['password']), 
-    "email"    => $_POST['email'] 
+    "email"    => $_POST['email']
   ); 
   $cekUsername = $db->from('tbl_user')->where('username',$data['username'])->select('username')->many(); 
   $cekEmail = $db->from('tbl_user')->where('email',$data['email'])->select('username')->many(); 
   $data['tipe_user'] = 'Pelanggan'; 
+  $pelanggan = array(
+    "nm_pelanggan"  => $_POST['nm_pelanggan'], 
+    "alamat"    => $_POST['alamat'], 
+    "jk"    => $_POST['jk'],
+    "no_telpon"    => $_POST['no_telpon']
+  );
   
   if(count($cekUsername) != 0) $pesan = "username";
   else if(count($cekEmail) != 0) $pesan = "email";
   else { 
-    if($db->from('tbl_user')->insert($data)->execute()) $pesan = "success";
-    else  $pesan="db";
+    if($db->from('tbl_user')->insert($data)->execute()){
+      $pelanggan = array(
+        "nm_pelanggan"  => $_POST['nm_pelanggan'], 
+        "alamat"    => $_POST['alamat'], 
+        "jk"    => $_POST['jk'],
+        "no_telpon"    => $_POST['no_telpon'],
+        "id_user" => $db->insert_id
+      );
+      if($db->from('tbl_pelanggan')->insert($pelanggan)->execute()){
+        $pesan = "success";
+      }else $pesan="db";
+    }else $pesan="db";
   }
   if($pesan != ''){
     switch($pesan){
@@ -74,6 +90,34 @@ include "template/head.php";
 								"label"	=>	"Password",
 								"type"	=>	"input",
 								"inputType"	=>	"password",
+							),
+							array(
+								"name"	=>	"nm_pelanggan",
+								"label"	=>	"Nama Lengkap",
+								"type"	=>	"input",
+								"inputType"	=>	"text",
+							),
+							array(
+								"name"	=>	"jk",
+								"label"	=>	"Jenis Kelamin",
+								"type"	=>	"select",
+                "options" => array(
+                  array("jk"=> "Laki-Laki"),
+                  array("jk"=> "Perempuan")
+                ),
+                "optionValue" => "jk",
+                "optionLabel" => "jk"
+							),
+							array(
+								"name"	=>	"no_telpon",
+								"label"	=>	"Nomor Telpon",
+								"type"	=>	"input",
+								"inputType"	=>	"text"
+							),
+							array(
+								"name"	=>	"alamat",
+								"label"	=>	"Alamat",
+								"type"	=>	"textarea"
 							)
 						);
                 ?></p>

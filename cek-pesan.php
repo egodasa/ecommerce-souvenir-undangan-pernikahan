@@ -11,6 +11,19 @@ include "template/head.php";
 <?php
 include "template/header.php";
 include "template/components.php";
+$diskon = 0;
+$ket_diskon = 0;
+if($_POST['jumlah_pesan'] >= 500 && $_POST['jumlah_pesan'] <= 1000){
+  $diskon = 10/100;
+  $ket_diskon = " (Diskon sebesar 10%)";
+}else if($_POST['jumlah_pesan'] > 1000 && $_POST['jumlah_pesan'] <= 1500){
+  $diskon = 20/100;
+  $ket_diskon = " (Diskon sebesar 20%)";
+}else if($_POST['jumlah_pesan'] > 1500){
+  $diskon = 30/100;
+  $ket_diskon = " (Diskon sebesar 30%)";
+}
+$total_harga = ($_POST['total_harga']) - ($_POST['total_harga']*$diskon);
 $kota = $db->from('tbl_kota')->where("id_kota",$_POST['id_kota'])->select()->one();
 ?>
 <div id="content">
@@ -47,8 +60,8 @@ $kota = $db->from('tbl_kota')->where("id_kota",$_POST['id_kota'])->select()->one
 <br/>
 
 <label for="total_harga"><b>Total Harga</b></label>
-<input type="hidden" name="total_harga" value="<?php echo ($_POST['total_harga']+$kota['tarif']);?>"/>
-<p class="form-control"><?php echo ($_POST['total_harga']+$kota['tarif']); ?></p>
+<input type="hidden" name="total_harga" value="<?php echo ($total_harga+$kota['tarif']);?>"/>
+<p class="form-control"><?php echo ($total_harga+$kota['tarif']).$ket_diskon; ?></p>
 <br/>
 
 <label for="jumlah_pesan"><b>Jumlah Pesan</b></label>

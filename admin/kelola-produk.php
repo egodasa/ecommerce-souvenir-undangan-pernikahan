@@ -34,12 +34,6 @@ $produk = array(
 		"optionValue"	=> "jenis_produk"
 	),
 	array(
-		"name"	=>	"stok",
-		"label"	=>	"Stok Produk",
-		"type"	=>	"input",
-		"inputType"	=>	"number"
-	),
-	array(
 		"name"	=>	"harga",
 		"label"	=>	"Harga Produk",
 		"type"	=>	"input",
@@ -89,10 +83,6 @@ $tableConf = array(
 	array(
 		"name"		=>	"harga",
 		"label"	=>	"Harga"
-	),
-	array(
-		"name"		=>	"stok",
-		"label"	=>	"Stok"
 	)
 );
 $url = array(
