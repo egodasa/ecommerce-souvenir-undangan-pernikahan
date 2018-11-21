@@ -3,7 +3,7 @@ session_start();
 require "../koneksi.php";
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	$d = $_POST;
-    $f = $_FILES['foto_produk']['name'];
+  $f = $_FILES['foto_produk']['name'];
 	$path = "../produk/";
 	$path = $path.basename($f);
 	move_uploaded_file($_FILES['foto_produk']['tmp_name'], $path);
