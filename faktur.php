@@ -1,7 +1,6 @@
 <?php
 session_start();
 require "koneksi.php";
-require "template/components.php";
 cekLogin('Pelanggan');
 require_once __DIR__ . '/vendor/autoload.php';
 $mpdf = new \Mpdf\Mpdf(['tempDir' => __DIR__ . '/../tsmp']);
@@ -44,7 +43,7 @@ h1, h2, p{
 $tgl = explode(" ",$detail[0]['tgl_pesan']);
 
 $html .= '
-<div style="width:75%;float: left;">
+<div style="width:70%;float: left;">
 <p style="text-align: left;"><b>No Faktur : '.$detail[0]['id_pemesanan'].'</p></b>
 <p style="text-align: left;">Tanggal Pesan : '.tanggal_indo($tgl[0], true).' '.$tgl[1].'</p>
 <p style="text-align: left;">Nama : '.$detail[0]['nama_pemesan'].'</p>
@@ -52,8 +51,8 @@ $html .= '
 <p style="text-align: left;">Alamat : '.$detail[0]['alamat_pemesan'].'</p>
 	
 </div>
-<div style="width:25%;float: right;">
-    <img src="'.$base_url.'/img/logo.png" />
+<div style="width:30%;float: right;">
+    <img src="'.$base_url.'images/home/logo.png" />
 </div>
 <div style="clear: both;"></div>
 ';

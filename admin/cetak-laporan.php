@@ -1,7 +1,6 @@
 <?php
 session_start();
 require "../koneksi.php";
-require "../template/components.php";
 cekLogin('Admin');
 require_once __DIR__ . '/../vendor/autoload.php';
 $mpdf = new \Mpdf\Mpdf(['tempDir' => __DIR__ . '/../tsmp']);

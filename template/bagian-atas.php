@@ -2,7 +2,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-require "components.php";
 include "head.php";
 ?>
 <body>

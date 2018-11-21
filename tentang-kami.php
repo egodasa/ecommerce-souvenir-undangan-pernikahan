@@ -10,9 +10,9 @@ $judul = 'Tentang Kami';
 <div class="box">
 	<div class="box-body">
 		<div class="section-title">
-			<h3 class="title">Tentang Toko Asmidar</h3>
+			<h3 class="title">Tentang Toko Eggy Alluminium</h3>
 		</div>
-	ATestsdfsndfndsnfsfn
+    Toko Eggy Aluminium didirikan oleh H.Asrizal berserta istrinya Hj.Martinus.Toko Eggy Aluminium berdiri pada tahun 1997.
 	</div>
 </div>
 <!-- END OF CONTENT -->

@@ -27,13 +27,13 @@ $judul = 'Hubungi Kami';
 				<img src="<?php echo $base_url; ?>images/ig.jpg" style="width:100%;" class="img-thumbnail img-responsive" alt= "Image"/>
 			</p>
 			<p class="text-center"><b>Instagram</b></p>
-			<p class="text-center"><b>Asmidar</b></p>
+			<p class="text-center"><b>Eggy Alluminium</b></p>
 		</div>
 		<div class="col-sm-4">
 			<p class="text-center">
 				<img src="<?php echo $base_url; ?>images/fb.jpg" style="width:100%;" class="img-thumbnail img-responsive" alt= "Image"/>
 			</p><center><b>Facebook</b></p>
-			<p class="text-center"><b>Asmidar</b></p>
+			<p class="text-center"><b>Eggy Alluminium</b></p>
 		</div>
 	</div>
 	</div>

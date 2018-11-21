@@ -10,7 +10,7 @@ $judul = 'Cara Pesan';
 	<div class="box">
 		<div class="box-body">
 		<div class="section-title">
-			<h3 class="title">Cara Pemesanan di Toko Asmidar</h3>
+			<h3 class="title">Cara Pemesanan di Toko Eggy Aluminium</h3>
 		</div>
 		<ol>
 			<li>Pembeli yang ingin membeli produk melalui web bisa langsung melakukan registrasi</li>

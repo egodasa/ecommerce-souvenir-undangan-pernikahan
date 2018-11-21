@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/vendor/autoload.php';
 include "db.php";
+require "template/components.php";
 $base_url= "http://localhost/eggy_kudil/";
 $_GLOBAL['base_url'] = $base_url;
 $db = new Sparrow();

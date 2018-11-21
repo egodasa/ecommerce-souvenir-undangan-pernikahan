@@ -47,7 +47,7 @@ include "template/bagian-atas.php";
 	<div class="row">
 		<div class="col-lg-6">
 		  <div class="box">
-			<h2 class="text-uppercase">Buat Akun</h2>
+			<h2 class="text-uppercase">Registrasi Akun</h2>
 			<p>Pembelian pada website ini hanya bisa dilakukan jika Anda sudah punya akun</p>
 			<hr>
 			<p><?php
@@ -92,7 +92,7 @@ include "template/bagian-atas.php";
 			  formGenerator($registrasiForm);
 			  ?>
 			  <div class="text-center">
-				<button type="submit" class="btn btn-template-outlined"><i class="fa fa-user-md"></i> Register</button>
+				<button type="submit" class="btn btn-success"><i class="fa fa-user-md"></i> Register</button>
 			  </div>
 			</form>
 		  </div>
@@ -108,9 +108,10 @@ include "template/bagian-atas.php";
 			  formGenerator($loginForm);
 			  ?>
 			  <div class="text-center">
-				<button type="submit" class="btn btn-template-outlined"><i class="fa fa-sign-in"></i> Log in</button>
+				<button type="submit" class="btn btn-success"><i class="fa fa-sign-in"></i> Log in</button>
 			  </div>
 			</form>
+      <div class="form-group"></div>
 		  </div>
 		</div>
 	</div>
