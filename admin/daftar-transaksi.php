@@ -151,7 +151,7 @@ foreach($foto as $f){
 	<h3 class="title">Daftar Transaksi</h3>
 </div>
 <div class="table-responsive">
-<table class="table table-hover">
+<table class="table table-hover table-border">
 <thead>
 <tr>
 <th>No</th>
@@ -184,17 +184,19 @@ if(count($dataTable) == 0){
 				}else if($r['status_pembayaran'] == 'Ditolak'){
 					echo "<td><span class='badge badge-danger'>".$r['status_pembayaran']."</span></td>";
 				}
-			}
+			}else if($t['name'] == 'total_harga'){
+        echo "<td>Rp ".number_format($r[$t['name']],2,',','.')."</td>";
+      }
 			else echo "<td>".$r[$t['name']]."</td>";
 			if($t['name'] == 'status_pembayaran'){
 				if($r['status_pembayaran'] == 'Diproses'){
 					echo "<td><a class='btn btn-info btn-sm' href='".$base_url."/admin/verifikasi-pembayaran.php?id_pemesanan=".$r['id_pemesanan']."'>Verifikasi Pembayaran</td>";
 				}else if($r['status_pembayaran'] == 'Diterima') echo "<td><a target='_blank' class='btn btn-success btn-sm' href='".$base_url."/admin/faktur.php?id_pemesanan=".$r['id_pemesanan']."'>Cetak Faktur</a></td>";
 				else echo "<td><span class='badge badge-warning'>Menunggu Pembayaran</span></td>";
-				}
+      }
 		}
 		$no++;
-		echo "<td><a class='btn btn-sm btn-primary' href='daftar-transaksi.php?id_pemesanan=".$r['id_pemesanan']."'>Detail Pesanan</a></td>";
+		echo "<td><a class='btn btn-sm btn-success' href='daftar-transaksi.php?id_pemesanan=".$r['id_pemesanan']."'>Detail Pesanan</a></td>";
 	}
 }
 ?>

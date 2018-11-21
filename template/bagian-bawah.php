@@ -1,10 +1,5 @@
-<!-- BAGIAN BAWAH -->
 </div>
-<!-- /container -->
 </div>
-<!-- /section -->
-
-<!-- FOOTER -->
 <?php include "footer-bawah.php"; ?>
 <!-- /FOOTER -->
 

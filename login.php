@@ -1,7 +1,6 @@
 <?php
 session_start();
 require "koneksi.php";
-require "template/components.php";
 $judul = 'Login/Registrasi';
 
 if(isset($_SESSION['username'])){
@@ -41,24 +40,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	}
 }
 ?>
-
-<!-- BAGIAN ATAS -->
-<!DOCTYPE html>
-<html lang="en">
 <?php
-include "template/head.php";
+include "template/bagian-atas.php";
 ?>
-<body>
-<?php include "template/header.php"; ?>
-<!-- NAVIGATION -->
-<?php include "template/navbar.php"; ?>
-<!-- /NAVIGATION -->
-<!-- section -->
-<div class="section">
-	<!-- container -->
-	<div class="container">
-<!-- /BAGIAN ATAS -->
-
 	<!-- CONTENT -->
 	<div class="row">
 		<div class="col-lg-6">
@@ -132,18 +116,7 @@ include "template/head.php";
 	</div>
 	<!-- EOF CONTENT -->
 
-<!-- BAGIAN BAWAH -->
-</div>
-<!-- /container -->
-</div>
-<!-- /section -->
-
-<!-- FOOTER -->
-<?php include "template/footer-bawah.php"; ?>
-<!-- /FOOTER -->
-
-<?php include "template/javascript.php"; ?>
-</body>
-</html>
-<!-- BAGIAN BAWAH -->
+<?php
+include "template/bagian-bawah.php";
+?>
         

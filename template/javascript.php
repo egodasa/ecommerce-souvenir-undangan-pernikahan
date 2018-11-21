@@ -1,7 +1,8 @@
 <!-- jQuery Plugins -->
-	<script src="<?php echo $base_url;?>/js/jquery.min.js"></script>
-	<script src="<?php echo $base_url;?>/js/bootstrap.min.js"></script>
-	<script src="<?php echo $base_url;?>/js/slick.min.js"></script>
-	<script src="<?php echo $base_url;?>/js/nouislider.min.js"></script>
-	<script src="<?php echo $base_url;?>/js/jquery.zoom.min.js"></script>
-	<script src="<?php echo $base_url;?>/js/main.js"></script>
+<script src="<?=$base_url?>js/jquery.js"></script>
+<script src="<?=$base_url?>js/bootstrap.min.js"></script>
+<script src="<?=$base_url?>js/jquery.scrollUp.min.js"></script>
+<script src="<?=$base_url?>js/price-range.js"></script>
+<script src="<?=$base_url?>js/jquery.prettyPhoto.js"></script>
+<script src="<?=$base_url?>js/main.js"></script>
+  

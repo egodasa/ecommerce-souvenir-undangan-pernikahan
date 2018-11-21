@@ -1,147 +1,32 @@
-(function($) {
-  "use strict"
+/*price range*/
 
-  // NAVIGATION
-  var responsiveNav = $('#responsive-nav'),
-    catToggle = $('#responsive-nav .category-nav .category-header'),
-    catList = $('#responsive-nav .category-nav .category-list'),
-    menuToggle = $('#responsive-nav .menu-nav .menu-header'),
-    menuList = $('#responsive-nav .menu-nav .menu-list');
+if ($.fn.slider) {
+    $('#sl2').slider();
+}
 
-  catToggle.on('click', function() {
-    menuList.removeClass('open');
-    catList.toggleClass('open');
-  });
+var RGBChange = function () {
+    $('#RGB').css('background', 'rgb(' + r.getValue() + ',' + g.getValue() + ',' + b.getValue() + ')')
+};
 
-  menuToggle.on('click', function() {
-    catList.removeClass('open');
-    menuList.toggleClass('open');
-  });
+/*scroll to top*/
 
-  $(document).click(function(event) {
-    if (!$(event.target).closest(responsiveNav).length) {
-      if (responsiveNav.hasClass('open')) {
-        responsiveNav.removeClass('open');
-        $('#navigation').removeClass('shadow');
-      } else {
-        if ($(event.target).closest('.nav-toggle > button').length) {
-          if (!menuList.hasClass('open') && !catList.hasClass('open')) {
-            menuList.addClass('open');
-          }
-          $('#navigation').addClass('shadow');
-          responsiveNav.addClass('open');
-        }
-      }
-    }
-  });
-
-  // HOME SLICK
-  $('#home-slick').slick({
-    autoplay: true,
-    infinite: true,
-    speed: 300,
-    arrows: true,
-  });
-
-  // PRODUCTS SLICK
-  $('#product-slick-1').slick({
-    slidesToShow: 3,
-    slidesToScroll: 2,
-    autoplay: true,
-    infinite: true,
-    speed: 300,
-    dots: true,
-    arrows: false,
-    appendDots: '.product-slick-dots-1',
-    responsive: [{
-        breakpoint: 991,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        }
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          dots: false,
-          arrows: true,
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        }
-      },
-    ]
-  });
-
-  $('#product-slick-2').slick({
-    slidesToShow: 3,
-    slidesToScroll: 2,
-    autoplay: true,
-    infinite: true,
-    speed: 300,
-    dots: true,
-    arrows: false,
-    appendDots: '.product-slick-dots-2',
-    responsive: [{
-        breakpoint: 991,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        }
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          dots: false,
-          arrows: true,
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        }
-      },
-    ]
-  });
-
-  // PRODUCT DETAILS SLICK
-  $('#product-main-view').slick({
-    infinite: true,
-    speed: 300,
-    dots: false,
-    arrows: true,
-    fade: true,
-    asNavFor: '#product-view',
-  });
-
-  $('#product-view').slick({
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    arrows: true,
-    centerMode: true,
-    focusOnSelect: true,
-    asNavFor: '#product-main-view',
-  });
-
-  // PRODUCT ZOOM
-  $('#product-main-view .product-view').zoom();
-
-  // PRICE SLIDER
-  var slider = document.getElementById('price-slider');
-  if (slider) {
-    noUiSlider.create(slider, {
-      start: [1, 999],
-      connect: true,
-      tooltips: [true, true],
-      format: {
-        to: function(value) {
-          return value.toFixed(2) + '$';
-        },
-        from: function(value) {
-          return value
-        }
-      },
-      range: {
-        'min': 1,
-        'max': 999
-      }
+$(document).ready(function () {
+    $(function () {
+        $.scrollUp({
+            scrollName: 'scrollUp', // Element ID
+            scrollDistance: 300, // Distance from top/bottom before showing element (px)
+            scrollFrom: 'top', // 'top' or 'bottom'
+            scrollSpeed: 300, // Speed back to top (ms)
+            easingType: 'linear', // Scroll to top easing (see http://easings.net/)
+            animation: 'fade', // Fade, slide, none
+            animationSpeed: 200, // Animation in speed (ms)
+            scrollTrigger: false, // Set a custom triggering element. Can be an HTML string or jQuery object
+            //scrollTarget: false, // Set a custom target element for scrolling to the top
+            scrollText: '<i class="fa fa-angle-up"></i>', // Text for element, can contain HTML
+            scrollTitle: false, // Set a custom <a> title if required.
+            scrollImg: false, // Set true to use image
+            activeOverlay: false, // Set CSS color to display scrollUp active point, e.g '#00FFFF'
+            zIndex: 2147483647 // Z-Index for the overlay
+        });
     });
-  }
-
-})(jQuery);
+});

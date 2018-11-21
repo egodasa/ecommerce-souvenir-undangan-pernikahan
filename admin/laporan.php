@@ -106,38 +106,44 @@ if(isset($_GET['laporan'])){
 
 <!-- START OF CONTENT -->
 <div class="row bar mb-0">
-<div class="col-md-12">
+<div class="col-xs-12 col-sm-3 col-md-3">
 <div class="section-title">
-	<h3 class="title">Laporan Transaksi</h3>
+	<h3 class="title">Cetak Laporan</h3>
 </div>
 <form method="GET" action="cetak-laporan.php">
 <div class="row">
-	<div class="col-sm-4">
+	<div class="col-xs-12">
 		<div class="form-group">
 			<label>Dari</label>
 			<input type="date" name="awal" class="form-control"/>
 		</div>
-	</div>
-	<div class="col-sm-4">
-		<div class="form-group">
+    <div class="form-group">
 			<label>Hingga</label>
 			<input type="date" name="akhir" class="form-control" />
 		</div>
+    <div class="form-group">
+			<button type="submit" class="btn btn-sm btn-success">Cetak Laporan Sesuai Tanggal</button>
+		</div>
+    </form>
+	</div>
+	<div class="col-xs-12">
+		<div class="form-group">
+      <a target="_blank" class="btn btn-sm btn-success" href="<?php echo "cetak-laporan.php?laporan=harian"; ?>">Cetak Laporan Harian</a>
+    </div>
+		<div class="form-group">
+      <a target="_blank" class="btn btn-sm btn-success" href="<?php echo "cetak-laporan.php?laporan=bulanan"; ?>">Cetak Laporan Bulanan</a>
+    </div>
+		<div class="form-group">
+      <a target="_blank" class="btn btn-sm btn-success" href="<?php echo "cetak-laporan.php?laporan=tahunan"; ?>">Cetak Laporan Tahunan</a>
+    </div>
+		</div>
 	</div>
 </div>
-<div class="form-group">
-			<button tpe="submit" class="btn btn-sm btn-primary">Tampilkan</button>
-			<button type="submit" class="btn btn-sm btn-primary">Cetak Laporan Sesuai Tanggal</button>
-			<br/>
-			<br/>
-            <p><b>Pilih Laporan</b></p>
-            <a target="_blank" class="btn btn-sm btn-success" href="<?php echo "cetak-laporan.php?laporan=harian"; ?>">Cetak Laporan Harian</a>
-			<a target="_blank" class="btn btn-sm btn-success" href="<?php echo "cetak-laporan.php?laporan=bulanan"; ?>">Cetak Laporan Bulanan</a>
-			<a target="_blank" class="btn btn-sm btn-success" href="<?php echo "cetak-laporan.php?laporan=tahunan"; ?>">Cetak Laporan Tahunan</a>
-		</div>
-</form>
-<hr>
-<table class="table table-hover">
+<div class="col-xs-12 col-sm-9 col-md-9">
+<div class="section-title">
+	<h3 class="title">Daftar Transaksi</h3>
+</div>
+  <table class="table table-hover">
 <thead>
 	<tr>
 		<th>No</th>
@@ -177,6 +183,7 @@ if(count($dataTable) == 0){
 ?>
 	</tbody>	
 </table>
+</div>
 </div>
 </div>
 </div>

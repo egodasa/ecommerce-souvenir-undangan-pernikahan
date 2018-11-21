@@ -1,12 +1,13 @@
 <?php
 session_start();
 require "../koneksi.php";
+require "../template/components.php";
 cekLogin('Admin');
 require_once __DIR__ . '/../vendor/autoload.php';
 $mpdf = new \Mpdf\Mpdf(['tempDir' => __DIR__ . '/../tsmp']);
 $judul = null;
-$head = "<h2>Toko Asmidar</h2>";
-$alamat = "Jl. Raya Indarung No.04, Kel.Tanjung Sabar Padang";
+$head = "<img src='".$base_url."images/home/logo.png' style='margin:0 auto; '/>";
+$alamat = "Jl. Thamrin, Alang Laweh, Padang Selatan, Kota Padang, Sumatera Barat, 25123";
 $awal = date('Y-m-d');
 $akhir = date('Y-m-d');
 if(isset($_GET['awal'])) $awal = $_GET['awal'];
@@ -98,7 +99,7 @@ if(isset($_GET['laporan'])){
 	->join('tbl_produk',array('tbl_pemesanan.id_produk' => 'tbl_produk.id_produk'))
 	->many();
     }else{
-        $judul = "Laporan Dari Tanggal $awal - $akhir";
+        $judul = "Laporan Dari Tanggal ".tanggal_indo($awal)." - ".tanggal_indo($akhir);
         $dataTable = $db->sql('select * from tbl_pemesanan join tbl_produk on tbl_pemesanan.id_produk = tbl_produk.id_produk where tgl_pesan between "'.$awal.'" and "'.$akhir.'"')->many();
     }
 }
@@ -109,6 +110,7 @@ body{
 }
 table {
     border-collapse: collapse;
+    width:100%;
 }
 
 table, td, th {
@@ -118,6 +120,7 @@ table, td, th {
 th {
 	background-color: #f0f0f0;
 	padding: 13px 5px;
+  text-align: left;
 }
 td{
 	padding: 3px;
@@ -125,8 +128,11 @@ td{
 h1, h2, p{
 	text-align: center;
 }
+.no{
+  width: 10px;
+}
 .ttd{
-    width: 150px;
+    width: 300px;
     float: right;
     text-align: center;
 }
@@ -155,7 +161,7 @@ if(count($dataTable) == 0){
 	foreach($dataTable as $r){
 		$html .= "
 			<tr>
-				<td>".$no."</td>";
+				<td class='no'>".$no."</td>";
 		foreach($tableConf as $t){
 			if($t['name'] == 'total_harga'){
 				$html .= "<td>Rp ".number_format($r[$t['name']],2,',','.')."</td>";
@@ -175,7 +181,7 @@ if(count($dataTable) == 0){
 $html .= '</tbody>	
 </table>';
 
-$html .= "<br/><br/><br/><div class='ttd'>Padang, ".date("d-m-Y")."<br/><br/><br/> Mengetahui</div>";
+$html .= "<br/><br/><br/><div class='ttd'>Padang, ".tanggal_indo(date("Y-m-d"))."<br/><br/><br/> Mengetahui</div>";
 
 //~ echo $html;
 $mpdf->WriteHTML($html);

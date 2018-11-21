@@ -89,7 +89,9 @@ $pembeli = array(
 );
 formGenerator($pembeli);
 ?>
-<button type="submit" class="btn btn-lg btn-info pull-right">Lanjutkan >></button>
+<div class="form-group">
+  <button type="submit" class="btn btn-primary pull-right">Lanjutkan >></button>
+</div>
 </form>
 </div>
 </div>

@@ -14,60 +14,50 @@ $daftarProduk = $db->from('tbl_produk')
 ?>
 
 <?php include "template/bagian-atas.php"; ?>	
-
-<!-- MAIN -->
-<div id="main" class="col-xs-12">
-	<!-- STORE -->
-	<div id="store">
-		<!-- row -->
-		<div class="row">
-			<!-- AMBIL DATA DAN LOOPING PRODUK -->
-			<?php
-			foreach($daftarProduk as $hasil)
-			 {
-			?>
-			<!-- Product Single -->
-			<div class="col-md-3 col-sm-6 col-xs-6">
-				<div class="product product-single">
-					<div class="product-thumb">
-						<img src="<?php echo $base_url; ?>/produk/<?php echo $hasil['foto_produk']; ?>" width="300" height="300">
-					</div>
-					<div class="product-body">
-						<h3 class="product-price"><?php echo "Rp ".number_format($hasil['harga'],2,',','.'); ?></h3>
-						<h2 class="product-name"><a href="#"><?php echo $hasil['nm_produk']; ?></a></h2>
-						<div class="product-btns">
-							<a href="<?php echo $base_url; ?>/pesan-produk.php?id_produk=<?php echo $hasil['id_produk']; ?>" class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Pesan</a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<?php
-			}
-			?>
-			<!-- /Product Single -->
-			<!-- /AMBIL DATA DAN LOOPING PRODUK -->
-			
-			
-		</div>
-		<!-- /row -->
-	</div>
-	<!-- /STORE -->
-		<!-- paginasi -->
-	<div class="store-filter clearfix">
-		<div class="pull-right">
-			<ul class="pagination">
-				<li><span class="text-uppercase">Page:</span></li>
-				<?php
-					for($x = 0; $x < $totalpage; $x++){
-					echo '<li><a href="?page='.($x+1).'">'.($x+1).'</a><li>';  
-					}
-					?>
-			</ul>
-		</div>
-	</div>
-	<!-- paginasi -->
+<div class="row">
+  <div class="col-sm-12">
+    <div class="features_items"><!--features_items-->
+      <h2 class="title text-center">Daftar Produk</h2>
+<!-- AMBIL DATA DAN LOOPING PRODUK -->
+<?php
+foreach($daftarProduk as $hasil)
+ {
+?>
+<!-- Product Single -->
+<div class="col-sm-3">
+  <div class="product-image-wrapper">
+    <div class="single-products">
+      <div class="productinfo text-center">
+        <img src="<?php echo $base_url; ?>/produk/<?php echo $hasil['foto_produk']; ?>" alt="<?php echo $hasil['nm_produk']; ?>" height="250">
+        <h2><?php echo "Rp ".number_format($hasil['harga'],2,',','.'); ?></h2>
+        <p><?php echo $hasil['nm_produk']; ?></p>
+        <a href="<?php echo $base_url; ?>/pesan-produk.php?id_produk=<?php echo $hasil['id_produk']; ?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Pesan Produk Ini</a>
+      </div>
+    </div>
+  </div>
 </div>
-<!-- /MAIN -->
+<!-- EOF Product -->
+<?php
+}
+?>
+    </div>
+  </div>
+</div>
+
+
+<div class="store-filter clearfix">
+  <div class="pull-right">
+    <ul class="pagination">
+      <li><span class="text-uppercase">Page:</span></li>
+      <?php
+        for($x = 0; $x < $totalpage; $x++){
+        echo '<li><a href="?page='.($x+1).'">'.($x+1).'</a><li>';  
+        }
+        ?>
+    </ul>
+  </div>
+</div>
+
 
 
 <?php include "template/bagian-bawah.php"; ?>	

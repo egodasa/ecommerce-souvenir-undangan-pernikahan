@@ -1,23 +1,16 @@
-<footer id="footer" class="section section-grey">
-	<!-- container -->
-	<div class="container">
-		<!-- row -->
-		
-		<!-- /row -->
-		
-		<!-- row -->
-		<div class="row">
-			<div class="col-md-8 col-md-offset-2 text-center">
-				<!-- footer copyright -->
-				<div class="footer-copyright">
-					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-					Copyright ©<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+<div class="footer-bottom">
+			<div class="container">
+				<div class="row">
+					<p class="pull-left">Copyright © 2018 Eggy Alluminium</p>
+					<p class="pull-right">Designed by <span><a target="_blank" href="http://www.themeum.com">Themeum</a></span></p>
 				</div>
-				<!-- /footer copyright -->
 			</div>
 		</div>
-		<!-- /row -->
-	</div>
-	<!-- /container -->
-</footer>
+		
+	</footer>
+<script src="<?=$base_url?>js/bootstrap.min.js"></script>
+	<script src="<?=$base_url?>js/jquery.scrollUp.min.js"></script>
+	<script src="<?=$base_url?>js/price-range.js"></script>
+    <script src="<?=$base_url?>js/jquery.prettyPhoto.js"></script>
+    <script src="<?=$base_url?>js/main.js"></script>
+</body></html>

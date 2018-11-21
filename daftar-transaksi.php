@@ -197,7 +197,7 @@ if(count($dataTable) == 0){
                         }
                 }
                 $no++;
-		echo "<td><a class='btn btn-sm btn-primary' href='daftar-transaksi.php?id_pemesanan=".$r['id_pemesanan']."'>Detail Pesanan</a></td>";
+		echo "<td><a class='btn btn-sm btn-success' href='daftar-transaksi.php?id_pemesanan=".$r['id_pemesanan']."'>Detail Pesanan</a></td>";
         }
 		
 	}
