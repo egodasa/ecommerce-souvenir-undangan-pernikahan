@@ -16,7 +16,7 @@ $judul = 'Cara Pesan';
 			<li>Pembeli yang ingin membeli produk melalui web bisa langsung melakukan registrasi</li>
 		    <li>Setelah registrasi pembeli bisa memilih produk yang telah disajikan, dengan mengklik pesan pada produk</li>
 		    <li>Detail Produk akan ditampilkan, dan pembeli mengisi form alamat pengiriman dan nomor Hp               </li>
-		    <li>Selanjutnya pembeli bisa melakukan pembayaran melalui rekening yang ada di menu kontak                </li>
+		    <li>Selanjutnya pembeli bisa melakukan pembayaran melalui bank/ATM ke nomor rekening 1234566 (Bank BRI) a/n Kudil</li>
 		    <li>Dan mengklik daftar transaksi yang ada di menu untuk konfirmasi pembayaran                            </li>
 		</ol>
 		</div>

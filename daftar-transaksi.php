@@ -187,6 +187,9 @@ if(count($dataTable) == 0){
 					echo "<td><span class='badge badge-danger'>".$r['status_pembayaran']."</span></td>";
 				}
 			}
+      else if($t['name'] == 'total_harga'){
+        echo "<td>Rp ".number_format($r[$t['name']],2,',','.')."</td>";
+      }
 			else echo "<td>".$r[$t['name']]."</td>";
 			if($t['name'] == 'status_pembayaran'){
 				if($r['status_pembayaran'] == null){

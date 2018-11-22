@@ -7,14 +7,13 @@
       <div class="row">
         <div class="col-md-4 clearfix">
           <div class="logo pull-left">
-            <a href="index.html"><img src="<?php echo $base_url; ?>images/home/logo.png" alt=""></a>
+            <a href="<?php echo $base_url; ?>"><img src="<?php echo $base_url; ?>images/home/logo.png" alt=""></a>
           </div>
         </div>
         <div class="col-md-8 clearfix">
           <div class="shop-menu clearfix pull-right">
             <ul class="nav navbar-nav collapse navbar-collapse">
               <li><a href="<?php echo $base_url; ?>">Home</a></li>
-              <li><a href="<?php echo $base_url; ?>/hubungi-kami.php">Hubungi Kami</a></li>
               <li><a href="<?php echo $base_url; ?>/tentang-kami.php">Tentang Kami</a></li>
               <li><a href="<?php echo $base_url; ?>/cara-pesan.php">Cara Pesan</a></li>
               <?php if(isset($_SESSION['username'])):?>
@@ -29,6 +28,7 @@
     </div>
   </div>
   <!--/header-middle-->
+  <?php if(isset($_SESSION['username'])):?>
   <div class="header-bottom">
     <!--header-bottom-->
     <div class="container">
@@ -44,7 +44,6 @@
           </div>
           <div class="mainmenu pull-left">
             <ul class="nav navbar-nav collapse navbar-collapse">
-            <?php if(isset($_SESSION['username'])):?>
                 <?php if($_SESSION['tipe_user'] == 'Admin'): ?>
                 <li><a href="<?php echo $base_url;?>/admin/daftar-transaksi.php">Kelola Pesanan</a></li>
                 <li><a href="<?php echo $base_url;?>/admin/kelola-user.php">Kelola User</a></li>
@@ -55,12 +54,12 @@
                 <?php else: ?>
                 <li><a href="<?php echo $base_url;?>/daftar-transaksi.php">Daftar Transaksi</a></li>
 							<?php endif; ?>
-            <?php endif; ?>
             </ul>
           </div>
         </div>
       </div>
     </div>
   </div>
+  <?php endif; ?>
 </header>
 <!--/header-->
